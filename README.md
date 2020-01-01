@@ -6,6 +6,8 @@ series of LOGO-like given commands.
 
 ## Example
 
+![screenshot.png](screenshot.png)
+
 A quick example:
 
 ```dart
