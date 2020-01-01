@@ -1,8 +1,9 @@
 name: flutter_turtle
-description: A new Flutter project.
+description: flutter_turtle is a simple implementation of turtle graphic. It simply uses a custom painter to draw graphics into a widget by a
+series of LOGO-like given commands.
 version: 0.0.1
-author:
-homepage:
+author: Weizhong Yang <zonble@gmail.com>
+homepage: https://github.com/zonble/flutter_turtle
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
