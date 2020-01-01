@@ -3,9 +3,11 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 
-import 'tutle_state.dart';
+import 'turtle_state.dart';
 
+/// An abstract interface for all commands.
 abstract class TurtleCommand {
+  /// Runs the command.
   void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center);
 }
 

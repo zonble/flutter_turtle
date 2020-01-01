@@ -1,14 +1,47 @@
 # flutter_turtle
 
-A new Flutter project.
+flutter_turtle is a simple implementation of [turtle graphics](https://en.wikipedia.org/wiki/Turtle_graphics)
+for Flutter. It simply uses a custom painter to draw graphics into a widget by a
+series of LOGO-like given commands.
 
-## Getting Started
+## Example
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+A quick example:
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+```dart
+@override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.title)),
+      body: TurtleView(
+        child: Container(),
+        commands: [
+          PenDown(),
+          SetColor(() => Color(0xffff9933)),
+          Repeat(() => 20, [
+            Repeat(() => 180, [
+              Forward(() => 25.0),
+              Right(() => 20),
+            ]),
+            Right(() => 18),
+          ]),
+          PenUp(),
+        ],
+      ),
+    );
+  }
+```
+
+## Commands
+
+Currently supported commands are including:
+
+- PenDown
+- PenUp
+- Left
+- Right
+- Forward
+- SetColor
+- ResetPosition
+- ResetHeading
+- Repeat

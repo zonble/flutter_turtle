@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
-import 'package:flutter_turtle/src/tutle_state.dart';
+import 'package:flutter_turtle/src/turtle_state.dart';
 
 class _TurtlePainter extends CustomPainter {
   final List<TurtleCommand> commands;
