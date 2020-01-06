@@ -14,7 +14,7 @@ It is always fun to make your own DSL!
 
 ## Example
 
-![screenshot.png](screenshot.png)
+![screenshot.png](https://raw.githubusercontent.com/zonble/flutter_turtle/master/screenshot.png)
 
 A quick example:
 
@@ -51,8 +51,11 @@ Currently supported commands are including:
 - Left
 - Right
 - Forward
+- Backward
 - SetColor
 - SetStrokeWidth
+- GoTo
 - ResetPosition
 - ResetHeading
 - Repeat
+- Exec

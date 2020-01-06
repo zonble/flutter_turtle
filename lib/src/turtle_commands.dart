@@ -11,6 +11,21 @@ abstract class TurtleCommand<T> {
   T exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center);
 }
 
+/// Executes arbitrary code.
+@immutable
+class Exec implements TurtleCommand<void> {
+  /// The function to run.
+  final Function(TurtleState turtle, Canvas canvas, Paint paint, Offset center)
+      function;
+
+  /// Creates a new instance.
+  Exec(this.function);
+
+  @override
+  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
+      function(turtle, canvas, paint, center);
+}
+
 /// Puts the pen down.
 @immutable
 class PenDown implements TurtleCommand<void> {
@@ -127,6 +142,33 @@ class SetStrokeWidth implements TurtleCommand<void> {
   @override
   void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
       paint.strokeWidth = width();
+}
+
+/// Moves the turtle to an absolute position.
+///
+/// If the pen is down, draws a line.
+@immutable
+class GoTo implements TurtleCommand<void> {
+  /// Position X.
+  final double x;
+
+  /// Position Y.
+  final double y;
+
+  /// Creates a new instance.
+  GoTo(this.x, this.y);
+
+  @override
+  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) {
+    final currentPosition = turtle.position;
+    turtle.position = Offset(x, y);
+
+    if (turtle.isPenDown) {
+      final drawingBegin = center + currentPosition;
+      final drawingEnd = center + turtle.position;
+      canvas.drawLine(drawingBegin, drawingEnd, paint);
+    }
+  }
 }
 
 /// Moves the turtle to center.

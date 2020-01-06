@@ -31,11 +31,26 @@ class TurtleView extends StatelessWidget {
   /// The child widget.
   final Widget child;
 
-  TurtleView({Key key, this.child, this.commands}) : super(key: key);
+  /// Size of the canvas.
+  final Size size;
+
+  /// Whether the painting is complex enough to benefit from caching.
+  final bool isComplex;
+
+  /// Creates a new instance.
+  TurtleView({
+    Key key,
+    this.child,
+    this.commands,
+    this.isComplex = false,
+    this.size = Size.zero,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => CustomPaint(
         painter: _TurtlePainter(commands),
+        size: size,
+        isComplex: isComplex,
         child: child,
       );
 }
