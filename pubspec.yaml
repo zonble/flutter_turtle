@@ -1,6 +1,6 @@
 name: flutter_turtle
 description: flutter_turtle is a simple implementation of turtle graphic. It simply uses a custom painter to draw graphics into a widget by aseries of LOGO-like given commands.
-version: 0.0.1
+version: 0.1.0
 author: Weizhong Yang <zonble@gmail.com>
 homepage: https://github.com/zonble/flutter_turtle
 
@@ -16,7 +16,6 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-
   # To add assets to your package, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
@@ -27,7 +26,6 @@ flutter:
   #
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # To add custom fonts to your package, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
