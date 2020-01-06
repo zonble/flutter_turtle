@@ -1,8 +1,16 @@
 # flutter_turtle
 
-flutter_turtle is a simple implementation of [turtle graphics](https://en.wikipedia.org/wiki/Turtle_graphics)
-for Flutter. It simply uses a custom painter to draw graphics into a widget by a
-series of LOGO-like given commands.
+flutter_turtle is a simple implementation of turtle graphics for Flutter. It
+simply uses a custom painter to draw graphics by a series of Logo-like commands.
+
+For further information about turtle graphics, please visit Wikipedia:
+
+- https://en.wikipedia.org/wiki/Turtle_graphics
+- https://en.wikipedia.org/wiki/Logo_(programming_language)
+
+## Why I Make This?
+
+It is always fun to make your own DSL!
 
 ## Example
 
@@ -44,6 +52,7 @@ Currently supported commands are including:
 - Right
 - Forward
 - SetColor
+- SetStrokeWidth
 - ResetPosition
 - ResetHeading
 - Repeat

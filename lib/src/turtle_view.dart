@@ -23,17 +23,19 @@ class _TurtlePainter extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
 
+/// TurtleView takes commands and draw graphics in a canvas accordingly.
 class TurtleView extends StatelessWidget {
+  /// The commands.
   final List<TurtleCommand> commands;
+
+  /// The child widget.
   final Widget child;
 
   TurtleView({Key key, this.child, this.commands}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: _TurtlePainter(commands),
-      child: child,
-    );
-  }
+  Widget build(BuildContext context) => CustomPaint(
+        painter: _TurtlePainter(commands),
+        child: child,
+      );
 }

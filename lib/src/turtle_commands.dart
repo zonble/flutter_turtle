@@ -30,7 +30,9 @@ class PenUp implements TurtleCommand {
 /// Turns left.
 @immutable
 class Left implements TurtleCommand {
-  /// the angle.
+  /// The angle.
+  ///
+  /// Please note that it is not radius.
   final double Function() angle;
 
   /// Creates a new instance.
@@ -44,7 +46,9 @@ class Left implements TurtleCommand {
 /// Turns right.
 @immutable
 class Right implements TurtleCommand {
-  /// the right.
+  /// The angle.
+  ///
+  /// Please note that it is not radius.
   final double Function() angle;
 
   /// Creates a new instance.
@@ -60,7 +64,7 @@ _angleToRadians(double angle) => angle / 180 * math.pi;
 /// Moves forward.
 @immutable
 class Forward implements TurtleCommand {
-  /// The distance.
+  /// The distance in points.
   final double Function() distance;
 
   /// Creates a new instance.
@@ -70,10 +74,10 @@ class Forward implements TurtleCommand {
   void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) {
     final radians = _angleToRadians(turtle.angle);
     final distance = this.distance();
-    final x = math.cos(radians) * distance;
-    final y = math.sin(radians) * distance;
+    final dx = math.cos(radians) * distance;
+    final dy = math.sin(radians) * distance;
     final currentPosition = turtle.position;
-    turtle.position = currentPosition + Offset(x, y);
+    turtle.position = currentPosition + Offset(dx, dy);
 
     if (turtle.isPenDown) {
       final drawingBegin = center + currentPosition;
@@ -95,6 +99,20 @@ class SetColor implements TurtleCommand {
   @override
   void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
       paint.color = color();
+}
+
+/// Sets a new stroke width.
+@immutable
+class SetStrokeWidth implements TurtleCommand {
+  /// The new width.
+  final double Function() width;
+
+  /// Creates a new instance.
+  SetStrokeWidth(this.width);
+
+  @override
+  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
+      paint.strokeWidth = width();
 }
 
 /// Moves the turtle to center.
