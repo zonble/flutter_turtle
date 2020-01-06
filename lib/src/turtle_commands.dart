@@ -6,14 +6,14 @@ import 'package:flutter/cupertino.dart';
 import 'turtle_state.dart';
 
 /// An abstract interface for all commands.
-abstract class TurtleCommand {
+abstract class TurtleCommand<T> {
   /// Runs the command.
-  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center);
+  T exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center);
 }
 
 /// Puts the pen down.
 @immutable
-class PenDown implements TurtleCommand {
+class PenDown implements TurtleCommand<void> {
   @override
   void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
       turtle.isPenDown = true;
@@ -21,7 +21,7 @@ class PenDown implements TurtleCommand {
 
 /// Raises the pen up.
 @immutable
-class PenUp implements TurtleCommand {
+class PenUp implements TurtleCommand<void> {
   @override
   void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
       turtle.isPenDown = false;
@@ -29,41 +29,41 @@ class PenUp implements TurtleCommand {
 
 /// Turns left.
 @immutable
-class Left implements TurtleCommand {
+class Left implements TurtleCommand<void> {
   /// The angle.
   ///
   /// Please note that it is not radius.
-  final double Function() angle;
+  final double Function() degrees;
 
   /// Creates a new instance.
-  Left(this.angle);
+  Left(this.degrees);
 
   @override
   void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
-      turtle.angle += angle();
+      turtle.degrees += degrees();
 }
 
 /// Turns right.
 @immutable
-class Right implements TurtleCommand {
+class Right implements TurtleCommand<void> {
   /// The angle.
   ///
   /// Please note that it is not radius.
-  final double Function() angle;
+  final double Function() degrees;
 
   /// Creates a new instance.
-  Right(this.angle);
+  Right(this.degrees);
 
   @override
   void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
-      turtle.angle -= angle();
+      turtle.degrees -= degrees();
 }
 
 _angleToRadians(double angle) => angle / 180 * math.pi;
 
 /// Moves forward.
 @immutable
-class Forward implements TurtleCommand {
+class Forward implements TurtleCommand<void> {
   /// The distance in points.
   final double Function() distance;
 
@@ -72,7 +72,7 @@ class Forward implements TurtleCommand {
 
   @override
   void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) {
-    final radians = _angleToRadians(turtle.angle);
+    final radians = _angleToRadians(turtle.degrees);
     final distance = this.distance();
     final dx = math.cos(radians) * distance;
     final dy = math.sin(radians) * distance;
@@ -87,9 +87,23 @@ class Forward implements TurtleCommand {
   }
 }
 
+/// Moves backward.
+@immutable
+class Backward implements TurtleCommand<void> {
+  /// The distance in points.
+  final double Function() distance;
+
+  /// Creates a new instance.
+  Backward(this.distance);
+
+  @override
+  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
+      Forward(() => distance() * -1).exec(turtle, canvas, paint, center);
+}
+
 /// Sets a new color.
 @immutable
-class SetColor implements TurtleCommand {
+class SetColor implements TurtleCommand<void> {
   /// The new color.
   final Color Function() color;
 
@@ -103,7 +117,7 @@ class SetColor implements TurtleCommand {
 
 /// Sets a new stroke width.
 @immutable
-class SetStrokeWidth implements TurtleCommand {
+class SetStrokeWidth implements TurtleCommand<void> {
   /// The new width.
   final double Function() width;
 
@@ -117,7 +131,7 @@ class SetStrokeWidth implements TurtleCommand {
 
 /// Moves the turtle to center.
 @immutable
-class ResetPosition implements TurtleCommand {
+class ResetPosition implements TurtleCommand<void> {
   @override
   void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
       turtle.position = Offset(0.0, 0.0);
@@ -125,15 +139,15 @@ class ResetPosition implements TurtleCommand {
 
 /// Makes the turtle to face to top.
 @immutable
-class ResetHeading implements TurtleCommand {
+class ResetHeading implements TurtleCommand<void> {
   @override
   void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
-      turtle.angle = 90;
+      turtle.degrees = 90;
 }
 
 /// Repeats commands
 @immutable
-class Repeat implements TurtleCommand {
+class Repeat implements TurtleCommand<void> {
   /// How many times to repeat.
   final int Function() times;
 

@@ -18,5 +18,5 @@ class TurtleState {
   /// The angle of the turtle.
   ///
   /// It effect how the turtle moves while calling a [Forward] command.
-  double angle = 90.0;
+  double degrees = 90.0;
 }

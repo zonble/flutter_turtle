@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
         commands: [
           PenDown(),
           SetColor(() => Color(0xffff9933)),
-          SetStrokeWidth(() => 3),
+          SetStrokeWidth(() => 2),
           Repeat(() => 20, [
             Repeat(() => 180, [
               Forward(() => 25.0),
