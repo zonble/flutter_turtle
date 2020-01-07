@@ -6,7 +6,7 @@ class StarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Logo')),
+      appBar: AppBar(title: Text('Star')),
       body: TurtleView(
         child: Container(),
         commands: [

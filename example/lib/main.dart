@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_turtle_example/pages/fern_page.dart';
 
 import 'pages/logo_page.dart';
 import 'pages/star_page.dart';
@@ -36,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
           MyTile(title: 'Star', builder: (_) => StarPage()),
           MyTile(title: 'Logo', builder: (_) => LogoPage()),
           MyTile(title: 'Tree', builder: (_) => TreePage()),
+          MyTile(title: 'Fern', builder: (_) => FernPage()),
         ],
       ),
     );
