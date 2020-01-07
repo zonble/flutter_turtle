@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
 
+/// An example from https://www.calormen.com/jslogo/
 class TreePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -10,33 +11,37 @@ class TreePage extends StatelessWidget {
         child: Container(),
         commands: [
           SetMacro('tree', [
-            IfElse((argv) => argv['size'] < 5.0, [
-              Forward((argv) => argv['size']),
-              Backward((argv) => argv['size']),
+            IfElse((_) => _['size'] < 5.0, [
+              Forward((_) => _['size']),
+              Backward((_) => _['size']),
               Stop(),
             ], [
-              Forward((argv) => (argv['size'] ~/ 3).toDouble()),
+              Forward((_) => (_['size'] ~/ 3).toDouble()),
               Left((_) => 30.0),
-              RunMacro('tree',
-                  (argv) => {'size': ((argv['size'] * 2 ~/ 3)).toDouble()}),
+              RunMacro(
+                'tree',
+                (_) => {'size': ((_['size'] * 2 ~/ 3)).toDouble()},
+              ),
               Right((_) => 30.0),
-              Forward((argv) => (argv['size'] ~/ 6).toDouble()),
+              Forward((_) => (_['size'] ~/ 6).toDouble()),
               Right((_) => 25.0),
               RunMacro(
-                  'tree', (argv) => {'size': (argv['size'] / 2).toDouble()}),
+                'tree',
+                (_) => {'size': (_['size'] / 2).toDouble()},
+              ),
               Left((_) => 25.0),
-              Forward((argv) => (argv['size'] ~/ 3).toDouble()),
+              Forward((_) => (_['size'] ~/ 3).toDouble()),
               Right((_) => 25.0),
               RunMacro(
-                  'tree', (argv) => {'size': (argv['size'] / 2).toDouble()}),
+                'tree',
+                (_) => {'size': (_['size'] / 2).toDouble()},
+              ),
               Left((_) => 25.0),
-              Forward((argv) => (argv['size'] ~/ 6).toDouble()),
-              Backward((argv) => argv['size'])
+              Forward((_) => (_['size'] ~/ 6).toDouble()),
+              Backward((_) => _['size'])
             ])
           ]),
-          Left((_) => 180.0),
-          Forward((_) => 140.0),
-          Left((_) => 180.0),
+          Backward((_) => 140.0),
           PenDown(),
           SetColor((_) => Colors.green),
           RunMacro('tree', (_) => {'size': 280.0}),
