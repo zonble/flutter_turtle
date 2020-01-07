@@ -10,9 +10,9 @@ class TreePage extends StatelessWidget {
         child: Container(),
         commands: [
           SetMacro('tree', [
-            IfElse((argv) => argv['size'].toDouble() < 5.0, [
-              Forward((argv) => argv['size'].toDouble()),
-              Backward((argv) => argv['size'].toDouble()),
+            IfElse((argv) => argv['size'] < 5.0, [
+              Forward((argv) => argv['size']),
+              Backward((argv) => argv['size']),
               Stop(),
             ], [
               Forward((argv) => (argv['size'] ~/ 3).toDouble()),
@@ -31,11 +31,15 @@ class TreePage extends StatelessWidget {
                   'tree', (argv) => {'size': (argv['size'] / 2).toDouble()}),
               Left((_) => 25.0),
               Forward((argv) => (argv['size'] ~/ 6).toDouble()),
-              Backward((argv) => argv['size'].toDouble())
+              Backward((argv) => argv['size'])
             ])
           ]),
+          Left((_) => 180.0),
+          Forward((_) => 140.0),
+          Left((_) => 180.0),
           PenDown(),
-          RunMacro('tree', (_) => {'size': 200.0}),
+          SetColor((_) => Colors.green),
+          RunMacro('tree', (_) => {'size': 280.0}),
           PenUp(),
         ],
       ),
