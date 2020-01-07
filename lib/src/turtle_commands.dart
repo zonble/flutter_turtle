@@ -84,12 +84,19 @@ class GoTo implements TurtleCommand<void> {
   }
 }
 
+/// Represents if..else flow control.
 @immutable
 class IfElse implements TurtleCommand<void> {
+  /// The condition.
   final bool Function(Map) condition;
+
+  /// The commands to run when the [condition] is true.
   final List<TurtleCommand> truePath;
+
+  /// The commands to run when the [condition] is false.
   final List<TurtleCommand> falsePath;
 
+  /// Creates a new instance.
   IfElse(this.condition, this.truePath, this.falsePath);
 
   @override
@@ -279,6 +286,7 @@ abstract class TurtleCommand<T> {
   T exec(TurtleContext context, Map argv);
 }
 
+/// A context object containing all required environment variables.
 class TurtleContext {
   TurtleState turtle;
   Canvas canvas;
