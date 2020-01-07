@@ -16,7 +16,7 @@ class TurtleState {
   /// If the pen is down.
   ///
   /// Or, if we should paint a line instead of merely moves the [position] of
-  /// the turtle while calling commands like [Forward], [Backward], [GoTo]
+  /// the turtle while calling commands like [Forward], [Back], [GoTo]
   /// and so on.
   bool isPenDown = false;
 

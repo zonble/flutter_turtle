@@ -27,13 +27,14 @@ A quick example:
         child: Container(),
         commands: [
           PenDown(),
-          SetColor(() => Color(0xffff9933)),
-          Repeat(() => 20, [
-            Repeat(() => 180, [
-              Forward(() => 25.0),
-              Right(() => 20),
+          SetColor((_) => Color(0xffff9933)),
+          SetStrokeWidth((_) => 2),
+          Repeat((_) => 20, [
+            Repeat((_) => 180, [
+              Forward((_) => 25.0),
+              Right((_) => 20),
             ]),
-            Right(() => 18),
+            Right((_) => 18),
           ]),
           PenUp(),
         ],
@@ -46,16 +47,30 @@ A quick example:
 
 Currently supported commands are including:
 
+### Turtle Motion
+
 - PenDown
 - PenUp
 - Left
 - Right
 - Forward
-- Backward
+- Back
 - SetColor
 - SetStrokeWidth
 - GoTo
 - ResetPosition
 - ResetHeading
+
+### Flow Control
+
+- IfElse
 - Repeat
+
+### Macros
+
+- SetMacro
+- RunMacro
+
+### Misc
+
 - Exec

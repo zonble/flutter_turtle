@@ -16,11 +16,7 @@ class _TurtlePainter extends CustomPainter {
         ..color = Colors.black
         ..strokeWidth = 2)
       ..center = Offset(size.width / 2, size.height / 2);
-    try {
-      commands.forEach((command) => command.exec(context, {}));
-    } catch (error) {
-//      print(error);
-    }
+    commands.forEach((command) => command.exec(context, {}));
   }
 
   @override

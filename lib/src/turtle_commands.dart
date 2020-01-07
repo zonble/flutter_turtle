@@ -9,12 +9,12 @@ _angleToRadians(double angle) => angle / 180 * math.pi;
 
 /// Moves backward.
 @immutable
-class Backward implements TurtleCommand<void> {
+class Back implements TurtleCommand<void> {
   /// The distance in points.
   final double Function(Map) distance;
 
   /// Creates a new instance.
-  Backward(this.distance);
+  Back(this.distance);
 
   @override
   void exec(TurtleContext context, Map argv) =>
@@ -212,12 +212,8 @@ class RunMacro implements TurtleCommand<void> {
 
     var arg = this.macroArgv(argv);
     try {
-      macro.commands.forEach((command) {
-        return command.exec(context, arg);
-      });
-    } catch (error) {
-//      print('macro error $error');
-    }
+      macro.commands.forEach((command) => command.exec(context, arg));
+    } on StopException catch (_) {}
 
     context.paint.strokeWidth = width;
     context.paint.color = color;
@@ -272,12 +268,13 @@ class SetStrokeWidth implements TurtleCommand<void> {
       context.paint.strokeWidth = width(argv);
 }
 
+class StopException implements Exception {}
+
 /// Stops drawing.
 @immutable
 class Stop implements TurtleCommand<void> {
   @override
-  void exec(TurtleContext context, Map argv) =>
-      throw Exception('Stop executing.');
+  void exec(TurtleContext context, Map argv) => throw StopException();
 }
 
 /// An abstract interface for all commands.
