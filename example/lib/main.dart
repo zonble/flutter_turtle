@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_turtle_example/tree_page.dart';
 
-import 'logo_page.dart';
+import 'pages/logo_page.dart';
+import 'pages/tree_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,9 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue),
       home: MyHomePage(title: 'Examples'),
     );
   }
@@ -34,24 +32,30 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(title: Text(widget.title)),
       body: ListView(
         children: <Widget>[
-          ListTile(
-            title: Text('Logo'),
-            trailing: Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => LogoPage()));
-            },
-          ),
-          ListTile(
-            title: Text('Tree'),
-            trailing: Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => TreePage()));
-            },
-          ),
+          MyTile(title: 'Logo', builder: (_) => LogoPage()),
+          MyTile(title: 'Tree', builder: (_) => TreePage()),
         ],
       ),
     );
   }
+}
+
+class MyTile extends StatelessWidget {
+  final String title;
+  final WidgetBuilder builder;
+
+  const MyTile({
+    Key key,
+    this.title,
+    this.builder,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => ListTile(
+        title: Text(title),
+        trailing: Icon(Icons.arrow_forward_ios),
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: builder));
+        },
+      );
 }
