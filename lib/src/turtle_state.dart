@@ -2,6 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter_turtle/flutter_turtle.dart';
 
+class Macro {
+  final List<TurtleCommand> commands;
+
+  Macro({this.commands});
+}
+
 /// Represents the state of a turtle.
 class TurtleState {
   /// If the pen is down.
@@ -20,4 +26,6 @@ class TurtleState {
   ///
   /// It effect how the turtle moves while calling a [Forward] command.
   double degrees = 90.0;
+
+  Map<String, Macro> macros;
 }

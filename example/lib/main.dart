@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_turtle/flutter_turtle.dart';
+
+import 'logo_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,20 +31,16 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
-      body: TurtleView(
-        child: Container(),
-        commands: [
-          PenDown(),
-          SetColor(() => Color(0xffff9933)),
-          SetStrokeWidth(() => 2),
-          Repeat(() => 20, [
-            Repeat(() => 180, [
-              Forward(() => 25.0),
-              Right(() => 20),
-            ]),
-            Right(() => 18),
-          ]),
-          PenUp(),
+      body: ListView(
+        children: <Widget>[
+          ListTile(
+            title: Text('Logo'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => LogoPage()));
+            },
+          ),
         ],
       ),
     );

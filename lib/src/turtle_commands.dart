@@ -5,41 +5,83 @@ import 'package:flutter/cupertino.dart';
 
 import 'turtle_state.dart';
 
+class TurtleContext {
+  TurtleState turtle;
+  Canvas canvas;
+  Paint paint;
+  Offset center;
+}
+
 /// An abstract interface for all commands.
 abstract class TurtleCommand<T> {
   /// Runs the command.
-  T exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center);
+  T exec(TurtleContext context);
+}
+
+/// Stops drawing.
+@immutable
+class Stop implements TurtleCommand<void> {
+  @override
+  void exec(TurtleContext context) => throw Exception('Stop executing.');
+}
+
+@immutable
+class IfElse implements TurtleCommand<void> {
+  final bool Function() condition;
+  final List<TurtleCommand> truePath;
+  final List<TurtleCommand> falsePath;
+
+  IfElse({this.condition, this.truePath, this.falsePath});
+
+  @override
+  void exec(TurtleContext context) {
+    (condition() ? truePath : falsePath)
+        .forEach((command) => command.exec(context));
+  }
+}
+
+/// Sets a macro.
+@immutable
+class SetMacro implements TurtleCommand<void> {
+  /// Name of the macro.
+  final String name;
+
+  /// Commands in the macro.
+  final List<TurtleCommand> commands;
+
+  /// Creates a new instance.
+  SetMacro(this.name, this.commands);
+
+  @override
+  void exec(TurtleContext context) =>
+      context.turtle.macros[name] = Macro(commands: commands);
 }
 
 /// Executes arbitrary code.
 @immutable
 class Exec implements TurtleCommand<void> {
   /// The function to run.
-  final Function(TurtleState turtle, Canvas canvas, Paint paint, Offset center)
-      function;
+  final Function(TurtleContext context) function;
 
   /// Creates a new instance.
   Exec(this.function);
 
   @override
-  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
-      function(turtle, canvas, paint, center);
+  void exec(TurtleContext context) => function(context);
 }
 
 /// Puts the pen down.
 @immutable
 class PenDown implements TurtleCommand<void> {
   @override
-  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
-      turtle.isPenDown = true;
+  void exec(TurtleContext context) => context.turtle.isPenDown = true;
 }
 
 /// Raises the pen up.
 @immutable
 class PenUp implements TurtleCommand<void> {
   @override
-  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
-      turtle.isPenDown = false;
+  void exec(TurtleContext context) => context.turtle.isPenDown = false;
 }
 
 /// Turns left.
@@ -54,8 +96,7 @@ class Left implements TurtleCommand<void> {
   Left(this.degrees);
 
   @override
-  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
-      turtle.degrees += degrees();
+  void exec(TurtleContext context) => context.turtle.degrees += degrees();
 }
 
 /// Turns right.
@@ -70,8 +111,7 @@ class Right implements TurtleCommand<void> {
   Right(this.degrees);
 
   @override
-  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
-      turtle.degrees -= degrees();
+  void exec(TurtleContext context) => context.turtle.degrees -= degrees();
 }
 
 _angleToRadians(double angle) => angle / 180 * math.pi;
@@ -86,18 +126,18 @@ class Forward implements TurtleCommand<void> {
   Forward(this.distance);
 
   @override
-  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) {
-    final radians = _angleToRadians(turtle.degrees);
+  void exec(TurtleContext context) {
+    final radians = _angleToRadians(context.turtle.degrees);
     final distance = this.distance();
     final dx = math.cos(radians) * distance;
     final dy = math.sin(radians) * distance;
-    final currentPosition = turtle.position;
-    turtle.position = currentPosition + Offset(dx, dy);
+    final currentPosition = context.turtle.position;
+    context.turtle.position = currentPosition + Offset(dx, dy);
 
-    if (turtle.isPenDown) {
-      final drawingBegin = center + currentPosition;
-      final drawingEnd = center + turtle.position;
-      canvas.drawLine(drawingBegin, drawingEnd, paint);
+    if (context.turtle.isPenDown) {
+      final drawingBegin = context.center + currentPosition;
+      final drawingEnd = context.center + context.turtle.position;
+      context.canvas.drawLine(drawingBegin, drawingEnd, context.paint);
     }
   }
 }
@@ -112,8 +152,8 @@ class Backward implements TurtleCommand<void> {
   Backward(this.distance);
 
   @override
-  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
-      Forward(() => distance() * -1).exec(turtle, canvas, paint, center);
+  void exec(TurtleContext context) =>
+      Forward(() => distance() * -1).exec(context);
 }
 
 /// Sets a new color.
@@ -126,8 +166,7 @@ class SetColor implements TurtleCommand<void> {
   SetColor(this.color);
 
   @override
-  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
-      paint.color = color();
+  void exec(TurtleContext context) => context.paint.color = color();
 }
 
 /// Sets a new stroke width.
@@ -140,8 +179,7 @@ class SetStrokeWidth implements TurtleCommand<void> {
   SetStrokeWidth(this.width);
 
   @override
-  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
-      paint.strokeWidth = width();
+  void exec(TurtleContext context) => context.paint.strokeWidth = width();
 }
 
 /// Moves the turtle to an absolute position.
@@ -159,14 +197,14 @@ class GoTo implements TurtleCommand<void> {
   GoTo(this.x, this.y);
 
   @override
-  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) {
-    final currentPosition = turtle.position;
-    turtle.position = Offset(x, y);
+  void exec(TurtleContext context) {
+    final currentPosition = context.turtle.position;
+    context.turtle.position = Offset(x, y);
 
-    if (turtle.isPenDown) {
-      final drawingBegin = center + currentPosition;
-      final drawingEnd = center + turtle.position;
-      canvas.drawLine(drawingBegin, drawingEnd, paint);
+    if (context.turtle.isPenDown) {
+      final drawingBegin = context.center + currentPosition;
+      final drawingEnd = context.center + context.turtle.position;
+      context.canvas.drawLine(drawingBegin, drawingEnd, context.paint);
     }
   }
 }
@@ -175,16 +213,15 @@ class GoTo implements TurtleCommand<void> {
 @immutable
 class ResetPosition implements TurtleCommand<void> {
   @override
-  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
-      turtle.position = Offset(0.0, 0.0);
+  void exec(TurtleContext context) =>
+      context.turtle.position = Offset(0.0, 0.0);
 }
 
 /// Makes the turtle to face to top.
 @immutable
 class ResetHeading implements TurtleCommand<void> {
   @override
-  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) =>
-      turtle.degrees = 90;
+  void exec(TurtleContext context) => context.turtle.degrees = 90;
 }
 
 /// Repeats commands
@@ -200,11 +237,9 @@ class Repeat implements TurtleCommand<void> {
   Repeat(this.times, this.commands);
 
   @override
-  void exec(TurtleState turtle, Canvas canvas, Paint paint, Offset center) {
+  void exec(TurtleContext context) {
     for (var i = 0; i < times(); i++) {
-      commands.forEach((command) {
-        command.exec(turtle, canvas, paint, center);
-      });
+      commands.forEach((command) => command.exec(context));
     }
   }
 }
