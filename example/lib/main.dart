@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'pages/logo_page.dart';
+import 'pages/star_page.dart';
 import 'pages/tree_page.dart';
 
 void main() => runApp(MyApp());
@@ -32,6 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(title: Text(widget.title)),
       body: ListView(
         children: <Widget>[
+          MyTile(title: 'Star', builder: (_) => StarPage()),
           MyTile(title: 'Logo', builder: (_) => LogoPage()),
           MyTile(title: 'Tree', builder: (_) => TreePage()),
         ],
