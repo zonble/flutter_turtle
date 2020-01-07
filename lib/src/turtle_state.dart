@@ -2,9 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter_turtle/flutter_turtle.dart';
 
+/// Represents macros.
 class Macro {
+  /// Commands in a macro.
   final List<TurtleCommand> commands;
 
+  /// Creates a new instance.
   Macro({this.commands});
 }
 
@@ -25,7 +28,8 @@ class TurtleState {
   /// The angle of the turtle.
   ///
   /// It effect how the turtle moves while calling a [Forward] command.
-  double degrees = 90.0;
+  double degrees = -90.0;
 
-  Map<String, Macro> macros;
+  /// The macros.
+  Map<String, Macro> macros = {};
 }

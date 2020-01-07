@@ -9,19 +9,18 @@ class _TurtlePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    var paint = Paint()
-      ..color = Colors.black
-      ..strokeWidth = 2;
+    var context = TurtleContext()
+      ..turtle = TurtleState()
+      ..canvas = canvas
+      ..paint = (Paint()
+        ..color = Colors.black
+        ..strokeWidth = 2)
+      ..center = Offset(size.width / 2, size.height / 2);
     try {
-      var context = TurtleContext()
-        ..turtle = TurtleState()
-        ..canvas = canvas
-        ..paint = paint
-        ..center = Offset(size.width / 2, size.height / 2);
-      for (final command in commands) {
-        command.exec(context);
-      }
-    } catch (error) {}
+      commands.forEach((command) => command.exec(context, {}));
+    } catch (error) {
+//      print(error);
+    }
   }
 
   @override
@@ -52,8 +51,7 @@ class TurtleView extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) =>
-      CustomPaint(
+  Widget build(BuildContext context) => CustomPaint(
         painter: _TurtlePainter(commands),
         size: size,
         isComplex: isComplex,

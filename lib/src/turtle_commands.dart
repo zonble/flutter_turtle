@@ -15,28 +15,29 @@ class TurtleContext {
 /// An abstract interface for all commands.
 abstract class TurtleCommand<T> {
   /// Runs the command.
-  T exec(TurtleContext context);
+  T exec(TurtleContext context, Map argv);
 }
 
 /// Stops drawing.
 @immutable
 class Stop implements TurtleCommand<void> {
   @override
-  void exec(TurtleContext context) => throw Exception('Stop executing.');
+  void exec(TurtleContext context, Map argv) =>
+      throw Exception('Stop executing.');
 }
 
 @immutable
 class IfElse implements TurtleCommand<void> {
-  final bool Function() condition;
+  final bool Function(Map) condition;
   final List<TurtleCommand> truePath;
   final List<TurtleCommand> falsePath;
 
-  IfElse({this.condition, this.truePath, this.falsePath});
+  IfElse(this.condition, this.truePath, this.falsePath);
 
   @override
-  void exec(TurtleContext context) {
-    (condition() ? truePath : falsePath)
-        .forEach((command) => command.exec(context));
+  void exec(TurtleContext context, Map argv) {
+    var commands = (condition(argv) ? truePath : falsePath);
+    commands.forEach((command) => command.exec(context, argv));
   }
 }
 
@@ -53,35 +54,71 @@ class SetMacro implements TurtleCommand<void> {
   SetMacro(this.name, this.commands);
 
   @override
-  void exec(TurtleContext context) =>
-      context.turtle.macros[name] = Macro(commands: commands);
+  void exec(TurtleContext context, Map argv) {
+    context.turtle.macros[name] = Macro(commands: commands);
+  }
+}
+
+/// Runs a macro by a given [name].
+class RunMacro implements TurtleCommand<void> {
+  /// Name of the macro.
+  final String name;
+
+  /// The arguments.
+  final Function(Map) macroArgv;
+
+  /// Creates a new instance.
+  RunMacro(this.name, this.macroArgv);
+
+  @override
+  void exec(TurtleContext context, Map argv) {
+    var macro = context.turtle.macros[name];
+    if (macro == null) {
+      throw Exception('Macro does not exist');
+    }
+    var degrees = context.turtle.degrees;
+    var position = context.turtle.position;
+
+    var arg = this.macroArgv(argv);
+    try {
+      macro.commands.forEach((command) {
+        return command.exec(context, arg);
+      });
+    } catch (error) {
+//      print('macro error $error');
+    }
+
+    context.turtle.degrees = degrees;
+    context.turtle.position = position;
+  }
 }
 
 /// Executes arbitrary code.
 @immutable
 class Exec implements TurtleCommand<void> {
   /// The function to run.
-  final Function(TurtleContext context) function;
+  final Function(TurtleContext context, Map argv) function;
 
   /// Creates a new instance.
   Exec(this.function);
 
   @override
-  void exec(TurtleContext context) => function(context);
+  void exec(TurtleContext context, Map argv) => function(context, argv);
 }
 
 /// Puts the pen down.
 @immutable
 class PenDown implements TurtleCommand<void> {
   @override
-  void exec(TurtleContext context) => context.turtle.isPenDown = true;
+  void exec(TurtleContext context, Map argv) => context.turtle.isPenDown = true;
 }
 
 /// Raises the pen up.
 @immutable
 class PenUp implements TurtleCommand<void> {
   @override
-  void exec(TurtleContext context) => context.turtle.isPenDown = false;
+  void exec(TurtleContext context, Map argv) =>
+      context.turtle.isPenDown = false;
 }
 
 /// Turns left.
@@ -90,13 +127,14 @@ class Left implements TurtleCommand<void> {
   /// The angle.
   ///
   /// Please note that it is not radius.
-  final double Function() degrees;
+  final double Function(Map) degrees;
 
   /// Creates a new instance.
   Left(this.degrees);
 
   @override
-  void exec(TurtleContext context) => context.turtle.degrees += degrees();
+  void exec(TurtleContext context, Map argv) =>
+      context.turtle.degrees -= degrees(argv);
 }
 
 /// Turns right.
@@ -105,13 +143,14 @@ class Right implements TurtleCommand<void> {
   /// The angle.
   ///
   /// Please note that it is not radius.
-  final double Function() degrees;
+  final double Function(Map) degrees;
 
   /// Creates a new instance.
   Right(this.degrees);
 
   @override
-  void exec(TurtleContext context) => context.turtle.degrees -= degrees();
+  void exec(TurtleContext context, Map argv) =>
+      context.turtle.degrees += degrees(argv);
 }
 
 _angleToRadians(double angle) => angle / 180 * math.pi;
@@ -120,15 +159,15 @@ _angleToRadians(double angle) => angle / 180 * math.pi;
 @immutable
 class Forward implements TurtleCommand<void> {
   /// The distance in points.
-  final double Function() distance;
+  final double Function(Map) distance;
 
   /// Creates a new instance.
   Forward(this.distance);
 
   @override
-  void exec(TurtleContext context) {
+  void exec(TurtleContext context, Map argv) {
     final radians = _angleToRadians(context.turtle.degrees);
-    final distance = this.distance();
+    final distance = this.distance(argv);
     final dx = math.cos(radians) * distance;
     final dy = math.sin(radians) * distance;
     final currentPosition = context.turtle.position;
@@ -146,40 +185,42 @@ class Forward implements TurtleCommand<void> {
 @immutable
 class Backward implements TurtleCommand<void> {
   /// The distance in points.
-  final double Function() distance;
+  final double Function(Map) distance;
 
   /// Creates a new instance.
   Backward(this.distance);
 
   @override
-  void exec(TurtleContext context) =>
-      Forward(() => distance() * -1).exec(context);
+  void exec(TurtleContext context, Map argv) =>
+      Forward((_) => distance(argv) * -1).exec(context, argv);
 }
 
 /// Sets a new color.
 @immutable
 class SetColor implements TurtleCommand<void> {
   /// The new color.
-  final Color Function() color;
+  final Color Function(Map) color;
 
   /// Creates a new color.
   SetColor(this.color);
 
   @override
-  void exec(TurtleContext context) => context.paint.color = color();
+  void exec(TurtleContext context, Map argv) =>
+      context.paint.color = color(argv);
 }
 
 /// Sets a new stroke width.
 @immutable
 class SetStrokeWidth implements TurtleCommand<void> {
   /// The new width.
-  final double Function() width;
+  final double Function(Map) width;
 
   /// Creates a new instance.
   SetStrokeWidth(this.width);
 
   @override
-  void exec(TurtleContext context) => context.paint.strokeWidth = width();
+  void exec(TurtleContext context, Map argv) =>
+      context.paint.strokeWidth = width(argv);
 }
 
 /// Moves the turtle to an absolute position.
@@ -187,19 +228,16 @@ class SetStrokeWidth implements TurtleCommand<void> {
 /// If the pen is down, draws a line.
 @immutable
 class GoTo implements TurtleCommand<void> {
-  /// Position X.
-  final double x;
-
-  /// Position Y.
-  final double y;
+  /// Position.
+  final Offset Function(Map) position;
 
   /// Creates a new instance.
-  GoTo(this.x, this.y);
+  GoTo(this.position);
 
   @override
-  void exec(TurtleContext context) {
+  void exec(TurtleContext context, Map argv) {
     final currentPosition = context.turtle.position;
-    context.turtle.position = Offset(x, y);
+    context.turtle.position = position(argv);
 
     if (context.turtle.isPenDown) {
       final drawingBegin = context.center + currentPosition;
@@ -213,7 +251,7 @@ class GoTo implements TurtleCommand<void> {
 @immutable
 class ResetPosition implements TurtleCommand<void> {
   @override
-  void exec(TurtleContext context) =>
+  void exec(TurtleContext context, Map argv) =>
       context.turtle.position = Offset(0.0, 0.0);
 }
 
@@ -221,14 +259,14 @@ class ResetPosition implements TurtleCommand<void> {
 @immutable
 class ResetHeading implements TurtleCommand<void> {
   @override
-  void exec(TurtleContext context) => context.turtle.degrees = 90;
+  void exec(TurtleContext context, Map argv) => context.turtle.degrees = -90;
 }
 
 /// Repeats commands
 @immutable
 class Repeat implements TurtleCommand<void> {
   /// How many times to repeat.
-  final int Function() times;
+  final int Function(Map) times;
 
   /// The commands to run.
   final List<TurtleCommand> commands;
@@ -237,9 +275,9 @@ class Repeat implements TurtleCommand<void> {
   Repeat(this.times, this.commands);
 
   @override
-  void exec(TurtleContext context) {
-    for (var i = 0; i < times(); i++) {
-      commands.forEach((command) => command.exec(context));
+  void exec(TurtleContext context, Map argv) {
+    for (var i = 0; i < times(argv); i++) {
+      commands.forEach((command) => command.exec(context, argv));
     }
   }
 }

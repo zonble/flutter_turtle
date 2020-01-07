@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_turtle_example/tree_page.dart';
 
 import 'logo_page.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Examples'),
     );
   }
 }
@@ -39,6 +40,14 @@ class _MyHomePageState extends State<MyHomePage> {
             onTap: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (_) => LogoPage()));
+            },
+          ),
+          ListTile(
+            title: Text('Tree'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => TreePage()));
             },
           ),
         ],
