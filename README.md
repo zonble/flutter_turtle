@@ -58,6 +58,23 @@ another.
 
 In other words, flutter_turtle built a DSL over Dart and Flutter.
 
+If you have code in Logo like this:
+
+``` logo
+repeat 5 [ fd 100 rt 144 ]
+```
+
+It would be like the following code in Flutter Turtle DSL:
+
+``` dart
+[
+  Repeat((_) => 5, [
+    Forward((_) => 200),
+    Right((_) => 144),
+  ]),
+];
+```
+
 ### Flow Control
 
 There are some commands help you to do flow controls. You can use the `IfElse`
