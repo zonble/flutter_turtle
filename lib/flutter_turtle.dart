@@ -8,15 +8,36 @@
 /// - https://en.wikipedia.org/wiki/Logo_(programming_language)
 ///
 /// Currently supported commands are including:
+///
+/// ### Turtle Motion
+///
 /// - PenDown
 /// - PenUp
 /// - Left
 /// - Right
 /// - Forward
+/// - Back
 /// - SetColor
+/// - SetStrokeWidth
+/// - GoTo
 /// - ResetPosition
 /// - ResetHeading
+///
+/// ### Flow Control
+///
+/// - IfElse
 /// - Repeat
+///
+/// ### Macros
+///
+/// - SetMacro
+/// - RunMacro
+///
+/// ### Misc
+///
+/// - Exec
+///
+
 library flutter_turtle;
 
 export 'src/turtle_commands.dart';
