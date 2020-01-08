@@ -3,6 +3,7 @@ import 'package:flutter_turtle_example/pages/fern_page.dart';
 
 import 'pages/flower_page.dart';
 import 'pages/logo_page.dart';
+import 'pages/red_square_page.dart';
 import 'pages/star_page.dart';
 import 'pages/tree_page.dart';
 
@@ -38,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
           MyTile(title: 'Logo', builder: (_) => LogoPage()),
           MyTile(title: 'Star', builder: (_) => StarPage()),
           MyTile(title: 'Flower', builder: (_) => FlowerPage()),
+          MyTile(title: 'Red Suqares', builder: (_) => RedSquarePage()),
           MyTile(title: 'Tree', builder: (_) => TreePage()),
           MyTile(title: 'Fern', builder: (_) => FernPage()),
         ],
