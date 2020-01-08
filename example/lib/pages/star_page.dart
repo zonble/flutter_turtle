@@ -14,7 +14,7 @@ class StarPage extends StatelessWidget {
           SetColor((_) => Colors.red),
           SetStrokeWidth((_) => 2),
           Repeat((_) => 5, [
-            Forward((_) => 100),
+            Forward((_) => 200),
             Right((_) => 144),
           ]),
           PenUp(),
