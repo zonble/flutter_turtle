@@ -3,6 +3,8 @@ description: flutter_turtle is a simple implementation of turtle graphic. It sim
 version: 0.2.1
 author: Weizhong Yang <zonble@gmail.com>
 homepage: https://github.com/zonble/flutter_turtle
+repository: https://github.com/zonble/flutter_turtle
+issue_tracker: https://github.com/zonble/flutter_turtle/issues
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
