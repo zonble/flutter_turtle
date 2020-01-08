@@ -1,3 +1,7 @@
+## 0.2.1
+
+* Updates documentation.
+
 ## 0.2.0
 
 * Adds new commands like Back, Exec, IfElse and so on.
