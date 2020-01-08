@@ -10,7 +10,7 @@ For further information about turtle graphics, please visit Wikipedia:
 
 ## Why I Make This?
 
-It is always fun to make your own DSL!
+It is always fun to make your own [DSL](https://en.wikipedia.org/wiki/Domain-specific_language)!
 
 ## Example
 
@@ -56,8 +56,26 @@ graphics in Logo language, however, you are still coding in Dart and actually
 composing a list of Dart objects, and then `TurtleView` runs them one by
 another.
 
+In other words, flutter_turtle built a DSL over Dart and Flutter.
+
+### Flow Control
+
 There are some commands help you to do flow controls. You can use the `IfElse`
 class like using 'if..else..' in Dart, and you can use `Repeat` for loops.
+
+An example of `IfElse`:
+
+``` dart
+// If it is true, go forward for 10 pixels, otherwise go back for 10 pixels.
+IfElse((_)=>true, [Forward((_)=>10.0)], [Back(()=>10.0)]),
+```
+
+An example of `Repeat`:
+
+``` dart
+Repeat((_)=>10, [Forward((_)=>10.0)]),
+```
+
 
 ## Commands
 
