@@ -43,6 +43,22 @@ A quick example:
   }
 ```
 
+flutter_turtle provides a class, `TurtleView`, which is your canvas and accepts
+a list of commands to draw your graphics. Just create an instance of
+`TurtleView`, pass the commands in the `commands` parameter, and insert it to
+your widget tree.
+
+## Flutter Turtle DSL
+
+flutter_turtle a set of Dart classes to represents commands to control your
+turtle. Using them is quite alike to calling functions when you are doing turtle
+graphics in Logo language, however, you are still coding in Dart and actually
+composing a list of Dart objects, and then `TurtleView` runs them one by
+another.
+
+There are some commands help you to do flow controls. You can use the `IfElse`
+class like using 'if..else..' in Dart, and you can use `Repeat` for loops.
+
 ## Commands
 
 Currently supported commands are including:
