@@ -34,15 +34,46 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
-      body: ListView(
-        children: <Widget>[
-          MyTile(title: 'Logo', builder: (_) => LogoPage()),
-          MyTile(title: 'Star', builder: (_) => StarPage()),
-          MyTile(title: 'Flower', builder: (_) => FlowerPage()),
-          MyTile(title: 'Red Suqares', builder: (_) => RedSquarePage()),
-          MyTile(title: 'Tree', builder: (_) => TreePage()),
-          MyTile(title: 'Fern', builder: (_) => FernPage()),
-        ],
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10.0, bottom: 10),
+            child: Center(
+              child: Wrap(
+                children: <Widget>[
+                  MyTile(
+                    title: 'Logo',
+                    image: 'images/1.png',
+                    builder: (_) => LogoPage(),
+                  ),
+                  MyTile(
+                    title: 'Star',
+                    image: 'images/2.png',
+                    builder: (_) => StarPage(),
+                  ),
+                  MyTile(
+                      title: 'Flower',
+                      image: 'images/3.png',
+                      builder: (_) => FlowerPage()),
+                  MyTile(
+                      title: 'Red Suqares',
+                      image: 'images/4.png',
+                      builder: (_) => RedSquarePage()),
+                  MyTile(
+                    title: 'Tree',
+                    image: 'images/5.png',
+                    builder: (_) => TreePage(),
+                  ),
+                  MyTile(
+                    title: 'Fern',
+                    image: 'images/6.png',
+                    builder: (_) => FernPage(),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -50,20 +81,39 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class MyTile extends StatelessWidget {
   final String title;
+  final String image;
   final WidgetBuilder builder;
 
   const MyTile({
     Key key,
     this.title,
     this.builder,
+    this.image,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => ListTile(
-        title: Text(title),
-        trailing: Icon(Icons.arrow_forward_ios),
-        onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: builder));
-        },
+  Widget build(BuildContext context) => Card(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+        child: InkWell(
+          onTap: () =>
+              Navigator.of(context).push(MaterialPageRoute(builder: builder)),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: <Widget>[
+                Container(
+                    width: 150,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black26),
+                    ),
+                    child: Image.asset(this.image)),
+                SizedBox(height: 10),
+                Text(title),
+                SizedBox(height: 10),
+              ],
+            ),
+          ),
+        ),
       );
 }
