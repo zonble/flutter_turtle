@@ -16,7 +16,5 @@ jobs:
           channel: "stable" # optional, default to: 'stable'
       - run: flutter pub get
         working-directory: ./example
-      - run: flutter test
-        working-directory: ./example
       - run: flutter build apk --debug
         working-directory: ./example
