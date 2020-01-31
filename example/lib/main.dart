@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_turtle_example/pages/fern_page.dart';
 
@@ -16,6 +17,14 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: MyHomePage(title: 'Examples'),
+      routes: {
+        'logo': (_) => LogoPage(),
+        'star': (_) => StarPage(),
+        'flower': (_) => FlowerPage(),
+        'red_square': (_) => RedSquarePage(),
+        'tree': (_) => TreePage(),
+        'fern': (_) => FernPage(),
+      },
     );
   }
 }
@@ -44,30 +53,32 @@ class _MyHomePageState extends State<MyHomePage> {
                   MyTile(
                     title: 'Logo',
                     image: 'images/1.png',
-                    builder: (_) => LogoPage(),
+                    pageName: 'logo',
                   ),
                   MyTile(
                     title: 'Star',
                     image: 'images/2.png',
-                    builder: (_) => StarPage(),
+                    pageName: 'star',
                   ),
                   MyTile(
-                      title: 'Flower',
-                      image: 'images/3.png',
-                      builder: (_) => FlowerPage()),
+                    title: 'Flower',
+                    image: 'images/3.png',
+                    pageName: 'flower',
+                  ),
                   MyTile(
-                      title: 'Red Suqares',
-                      image: 'images/4.png',
-                      builder: (_) => RedSquarePage()),
+                    title: 'Red Suqares',
+                    image: 'images/4.png',
+                    pageName: 'red_square',
+                  ),
                   MyTile(
                     title: 'Tree',
                     image: 'images/5.png',
-                    builder: (_) => TreePage(),
+                    pageName: 'tree',
                   ),
                   MyTile(
                     title: 'Fern',
                     image: 'images/6.png',
-                    builder: (_) => FernPage(),
+                    pageName: 'fern',
                   ),
                 ],
               ),
@@ -81,13 +92,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
 class MyTile extends StatelessWidget {
   final String title;
+  final String pageName;
   final String image;
-  final WidgetBuilder builder;
 
   const MyTile({
     Key key,
     this.title,
-    this.builder,
+    this.pageName,
     this.image,
   }) : super(key: key);
 
@@ -96,8 +107,7 @@ class MyTile extends StatelessWidget {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10))),
         child: InkWell(
-          onTap: () =>
-              Navigator.of(context).push(MaterialPageRoute(builder: builder)),
+          onTap: () => Navigator.of(context).pushNamed(this.pageName),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
