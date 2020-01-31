@@ -1,0 +1,22 @@
+import 'package:meta/meta.dart';
+
+import '../turtle_commands.dart';
+import '../turtle_state.dart';
+
+/// Turns right.
+@immutable
+class Right implements TurtleCommand<void> {
+  /// The angle.
+  ///
+  /// Please note that it is not radius.
+  final double Function(Map) degrees;
+
+  /// Creates a new instance.
+  Right(this.degrees);
+
+  @override
+  List<Instruction> createInstruction(TurtleState turtle, Map argv) {
+    turtle.degrees += degrees(argv);
+    return [];
+  }
+}

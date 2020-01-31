@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
 
 /// Represents macros.
@@ -32,4 +33,10 @@ class TurtleState {
 
   /// The macros.
   Map<String, Macro> macros = {};
+
+  /// The color of the turtle.
+  Color color = Colors.black;
+
+  /// The current stroke width.
+  double strokeWidth = 2;
 }
