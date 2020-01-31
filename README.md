@@ -47,10 +47,12 @@ A Flutter web app example is available at https://zonble.github.io/flutter_turtl
 
 ## Usage
 
-flutter_turtle provides a class, `TurtleView`, which is your canvas and accepts
-a list of commands to draw your graphics. Just create an instance of
-`TurtleView`, pass the commands in the `commands` parameter, and insert it to
-your widget tree.
+flutter_turtle provides two class, `TurtleView`, which is your canvas and
+accepts a list of commands to draw your graphics, and `AnimatedTurtleView`,
+which is an animating version of `TurtleView`.
+
+Just create an instance of `TurtleView` or `AnimatedTurtleView`, pass the
+commands in the `commands` parameter, and insert it to your widget tree.
 
 ## Flutter Turtle DSL
 
@@ -149,6 +151,3 @@ Currently supported commands are including:
 - SetMacro
 - RunMacro
 
-### Misc
-
-- Exec
