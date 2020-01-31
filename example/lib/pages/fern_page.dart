@@ -7,7 +7,7 @@ class FernPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Fern')),
-      body: TurtleView(
+      body: AnimatedTurtleView(
         child: Container(),
         commands: [
           SetMacro('fern', [

@@ -24,8 +24,8 @@ class _TurtlePainter extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
 
-/// TurtleView takes commands and draw graphics in a canvas accordingly.
-class TurtleView extends StatefulWidget {
+/// The animated turtle view.
+class AnimatedTurtleView extends StatefulWidget {
   /// The commands.
   final List<TurtleCommand> commands;
 
@@ -38,20 +38,24 @@ class TurtleView extends StatefulWidget {
   /// Whether the painting is complex enough to benefit from caching.
   final bool isComplex;
 
+  /// The duration of the animation.
+  final Duration animationDuration;
+
   /// Creates a new instance.
-  TurtleView({
+  AnimatedTurtleView({
     Key key,
     this.child,
     this.commands,
     this.isComplex = false,
     this.size = Size.zero,
+    this.animationDuration = const Duration(seconds: 3),
   }) : super(key: key);
 
   @override
-  _TurtleViewState createState() => _TurtleViewState();
+  _AnimatedTurtleViewState createState() => _AnimatedTurtleViewState();
 }
 
-class _TurtleViewState extends State<TurtleView> {
+class _AnimatedTurtleViewState extends State<AnimatedTurtleView> {
   List<Instruction> _instructions = [];
 
   @override
@@ -61,10 +65,18 @@ class _TurtleViewState extends State<TurtleView> {
   }
 
   @override
-  Widget build(BuildContext context) => CustomPaint(
-        painter: _TurtlePainter(_instructions),
-        size: widget.size,
-        isComplex: widget.isComplex,
-        child: widget.child,
-      );
+  Widget build(BuildContext context) => TweenAnimationBuilder(
+      child: widget.child,
+      tween: Tween<double>(begin: 0, end: 1),
+      duration: widget.animationDuration,
+      builder: (context, value, child) {
+        var instructions =
+            _instructions.sublist(0, (_instructions.length * value).toInt());
+        return CustomPaint(
+          painter: _TurtlePainter(instructions),
+          size: widget.size,
+          isComplex: widget.isComplex,
+          child: child,
+        );
+      });
 }
