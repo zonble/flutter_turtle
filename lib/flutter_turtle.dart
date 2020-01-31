@@ -33,10 +33,6 @@
 /// - SetMacro
 /// - RunMacro
 ///
-/// ### Misc
-///
-/// - Exec
-///
 
 library flutter_turtle;
 
