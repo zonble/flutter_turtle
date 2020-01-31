@@ -12,7 +12,7 @@ class RedSquarePage extends StatelessWidget {
             SizedBox(height: 20.0),
             Text(
                 'http://www.logointerpreter.com/view-program.php?user=Josefminecraft&program=77%20red%20sqares'),
-            TurtleView(
+            AnimatedTurtleView(
               child: Container(
                 width: double.infinity,
                 height: 400.0,

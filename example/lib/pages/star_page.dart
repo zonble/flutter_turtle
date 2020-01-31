@@ -7,7 +7,8 @@ class StarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Star')),
-      body: TurtleView(
+      body: AnimatedTurtleView(
+        animationDuration: Duration(seconds: 1),
         child: Container(),
         commands: [
           PenDown(),

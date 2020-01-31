@@ -17,7 +17,7 @@ class LogoPage extends StatelessWidget {
               maxLines: 10,
               textAlign: TextAlign.center,
             ),
-            TurtleView(
+            AnimatedTurtleView(
               child: Container(
                 width: double.infinity,
                 height: 400,

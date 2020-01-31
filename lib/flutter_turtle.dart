@@ -40,6 +40,7 @@
 
 library flutter_turtle;
 
+export 'src/animated_turtle_view.dart';
 export 'src/commands/back.dart';
 export 'src/commands/forward.dart';
 export 'src/commands/go_to.dart';

@@ -26,7 +26,7 @@ class FlowerPage extends StatelessWidget {
           SizedBox(height: 20.0),
           Text(
               'http://www.logointerpreter.com/view-program.php?user=Jannacutie&program=color%20flower'),
-          TurtleView(
+          AnimatedTurtleView(
             child: Container(
               width: double.infinity,
               height: 400,

@@ -13,7 +13,7 @@ class TreePage extends StatelessWidget {
           children: <Widget>[
             SizedBox(height: 20),
             Text('An example from https://www.calormen.com/jslogo/'),
-            TurtleView(
+            AnimatedTurtleView(
               child: Container(
                 width: double.infinity,
                 height: 600,
