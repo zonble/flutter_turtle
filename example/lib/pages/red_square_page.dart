@@ -1,17 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
 
-class RedSquarePage extends StatelessWidget {
+class RedSquarePage extends StatefulWidget {
+  @override
+  _RedSquarePageState createState() => _RedSquarePageState();
+}
+
+class _RedSquarePageState extends State<RedSquarePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Star')),
+      appBar: AppBar(
+        title: Text('Red Suqares'),
+        actions: <Widget>[
+          FlatButton(
+            textColor: Colors.white,
+            onPressed: () => setState(() {}),
+            child: Text('Run'),
+          )
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             SizedBox(height: 20.0),
-            Text(
-                'http://www.logointerpreter.com/view-program.php?user=Josefminecraft&program=77%20red%20sqares'),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                  'http://www.logointerpreter.com/view-program.php?user=Josefminecraft&program=77%20red%20sqares'),
+            ),
             AnimatedTurtleView(
               child: Container(
                 width: double.infinity,

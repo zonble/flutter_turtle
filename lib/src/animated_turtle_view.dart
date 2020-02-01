@@ -55,28 +55,44 @@ class AnimatedTurtleView extends StatefulWidget {
   _AnimatedTurtleViewState createState() => _AnimatedTurtleViewState();
 }
 
-class _AnimatedTurtleViewState extends State<AnimatedTurtleView> {
+class _AnimatedTurtleViewState extends State<AnimatedTurtleView>
+    with SingleTickerProviderStateMixin {
   List<Instruction> _instructions = [];
+  AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
     _instructions = TurtleCompiler.compile(widget.commands);
+    _controller = AnimationController(
+      duration: widget.animationDuration,
+      vsync: this,
+    );
   }
 
   @override
-  Widget build(BuildContext context) => TweenAnimationBuilder(
-      child: widget.child,
-      tween: Tween<double>(begin: 0, end: 1),
-      duration: widget.animationDuration,
-      builder: (context, value, child) {
-        var instructions =
-            _instructions.sublist(0, (_instructions.length * value).toInt());
-        return CustomPaint(
-          painter: _TurtlePainter(instructions),
-          size: widget.size,
-          isComplex: widget.isComplex,
-          child: child,
-        );
-      });
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _controller.value = 0;
+    _controller.forward();
+    return AnimatedBuilder(
+        child: widget.child,
+        animation: _controller,
+        builder: (context, child) {
+          var value = _controller.value;
+          var instructions =
+              _instructions.sublist(0, (_instructions.length * value).toInt());
+          return CustomPaint(
+            painter: _TurtlePainter(instructions),
+            size: widget.size,
+            isComplex: widget.isComplex,
+            child: child,
+          );
+        });
+  }
 }

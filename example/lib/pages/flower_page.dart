@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
 import 'dart:math';
 
-class FlowerPage extends StatelessWidget {
+class FlowerPage extends StatefulWidget {
+  @override
+  _FlowerPageState createState() => _FlowerPageState();
+}
+
+class _FlowerPageState extends State<FlowerPage> {
   @override
   Widget build(BuildContext context) {
     Color randomColor() {
@@ -19,13 +24,24 @@ class FlowerPage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text('Flower')),
+      appBar: AppBar(title: Text('Flower'),
+        actions: <Widget>[
+          FlatButton(
+            textColor: Colors.white,
+            onPressed: () => setState(() {}),
+            child: Text('Run'),
+          )
+        ],
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           SizedBox(height: 20.0),
-          Text(
-              'http://www.logointerpreter.com/view-program.php?user=Jannacutie&program=color%20flower'),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+                'http://www.logointerpreter.com/view-program.php?user=Jannacutie&program=color%20flower'),
+          ),
           AnimatedTurtleView(
             child: Container(
               width: double.infinity,

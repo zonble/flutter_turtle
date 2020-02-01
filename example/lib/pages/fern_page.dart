@@ -2,11 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
 
 /// An example from https://www.calormen.com/jslogo/
-class FernPage extends StatelessWidget {
+class FernPage extends StatefulWidget {
+  @override
+  _FernPageState createState() => _FernPageState();
+}
+
+class _FernPageState extends State<FernPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Fern')),
+      appBar: AppBar(
+        title: Text('Fern'),
+        actions: <Widget>[
+          FlatButton(
+            textColor: Colors.white,
+            onPressed: () => setState(() {}),
+            child: Text('Run'),
+          )
+        ],
+      ),
       body: AnimatedTurtleView(
         child: Container(),
         commands: [

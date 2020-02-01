@@ -1,24 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
 
-class LogoPage extends StatelessWidget {
+class LogoPage extends StatefulWidget {
+  @override
+  _LogoPageState createState() => _LogoPageState();
+}
+
+class _LogoPageState extends State<LogoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Logo')),
+      appBar: AppBar(
+        title: Text('Logo'),
+        actions: <Widget>[
+          FlatButton(
+            textColor: Colors.white,
+            onPressed: () => setState(() {}),
+            child: Text('Run'),
+          )
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: 20),
-            Text(
-              'See https://en.wikipedia.org/wiki/Logo_(programming_language)',
-              maxLines: 10,
-              textAlign: TextAlign.center,
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'See https://en.wikipedia.org/wiki/Logo_(programming_language)',
+                maxLines: 10,
+                textAlign: TextAlign.center,
+              ),
             ),
             AnimatedTurtleView(
-              animationDuration: Duration(seconds: 10),
+              animationDuration: Duration(seconds: 3),
               child: Container(
                 width: double.infinity,
                 height: 400,
