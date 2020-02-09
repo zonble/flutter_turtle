@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_turtle_example/pages/fern_page.dart';
 
 import 'pages/flower_page.dart';
+import 'pages/label.dart';
 import 'pages/logo_page.dart';
 import 'pages/red_square_page.dart';
 import 'pages/star_page.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue),
       home: MyHomePage(title: 'Examples'),
       routes: {
+        'label': (_) => LabelPage(),
         'logo': (_) => LogoPage(),
         'star': (_) => StarPage(),
         'flower': (_) => FlowerPage(),
@@ -79,6 +81,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     title: 'Fern',
                     image: 'images/6.png',
                     pageName: 'fern',
+                  ),
+                  MyTile(
+                    title: 'Label',
+                    image: 'images/7.png',
+                    pageName: 'label',
                   ),
                 ],
               ),

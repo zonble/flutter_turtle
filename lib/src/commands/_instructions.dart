@@ -37,8 +37,11 @@ class DrawTextInstruction implements Instruction {
   @override
   exec(PaintContext context) {
     context.canvas.save();
-    context.canvas.translate(position.dx, position.dy);
-    context.canvas.rotate(math.pi * degrees / 360.0);
+    context.canvas.translate(
+      position.dx + context.center.dx,
+      position.dy + context.center.dy,
+    );
+    context.canvas.rotate(math.pi * degrees / 180.0);
 
     final span = TextSpan(
         style: TextStyle(color: color, fontSize: labelHeight), text: text);
