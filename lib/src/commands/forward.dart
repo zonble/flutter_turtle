@@ -9,9 +9,11 @@ import '_instructions.dart';
 
 _angleToRadians(double angle) => angle / 180 * math.pi;
 
-/// Moves forward.
+/// Asks the turtle to move forward.
+///
+/// If the pen is down, draws a line.
 @immutable
-class Forward implements TurtleCommand<void> {
+class Forward implements TurtleCommand {
   /// The distance in points.
   final double Function(Map) distance;
 

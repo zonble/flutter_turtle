@@ -10,7 +10,7 @@ import '_instructions.dart';
 ///
 /// If the pen is down, draws a line.
 @immutable
-class GoTo implements TurtleCommand<void> {
+class GoTo implements TurtleCommand {
   /// Position.
   final Offset Function(Map) position;
 

@@ -5,7 +5,7 @@ import '../turtle_state.dart';
 
 /// Represents if..else flow control.
 @immutable
-class IfElse implements TurtleCommand<void> {
+class IfElse implements TurtleCommand {
   /// The condition.
   final bool Function(Map) condition;
 

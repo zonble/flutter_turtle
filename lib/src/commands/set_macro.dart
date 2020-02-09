@@ -6,7 +6,7 @@ import '../turtle_state.dart';
 
 /// Sets a macro.
 @immutable
-class SetMacro implements TurtleCommand<void> {
+class SetMacro implements TurtleCommand {
   /// Name of the macro.
   final String name;
 

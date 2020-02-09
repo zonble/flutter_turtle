@@ -5,11 +5,9 @@ import '../turtle_state.dart';
 import '_exceptions.dart';
 import '_instructions.dart';
 
-/// Turns right.
-
 /// Runs a macro by a given [name].
 @immutable
-class RunMacro implements TurtleCommand<void> {
+class RunMacro implements TurtleCommand {
   /// Name of the macro.
   final String name;
 

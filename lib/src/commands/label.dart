@@ -5,7 +5,7 @@ import '../turtle_state.dart';
 import '_instructions.dart';
 
 @immutable
-class Label implements TurtleCommand<void> {
+class Label implements TurtleCommand {
   /// The text.
   final String Function(Map) text;
 

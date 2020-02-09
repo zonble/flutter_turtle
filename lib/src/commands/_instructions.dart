@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/widgets.dart';
 
+import '../painter.dart';
 import '../turtle_commands.dart';
 
 class DrawLineInstruction implements Instruction {

@@ -1,11 +1,8 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
-
+import 'painter.dart';
 import 'turtle_state.dart';
 
 /// An abstract interface for all commands.
-abstract class TurtleCommand<T> {
+abstract class TurtleCommand {
   List<Instruction> createInstruction(TurtleState turtle, Map argv);
 }
 
@@ -15,12 +12,7 @@ abstract class Instruction<T> {
   T exec(PaintContext context);
 }
 
-class PaintContext {
-  Canvas canvas;
-  Paint paint;
-  Offset center;
-}
-
+/// Compiles a list of [TurtleCommand] to a list of [Instruction].
 class TurtleCompiler {
   static List<Instruction> compile(List<TurtleCommand> commands) {
     var turtle = TurtleState();

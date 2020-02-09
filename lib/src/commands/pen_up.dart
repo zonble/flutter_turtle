@@ -5,7 +5,7 @@ import '../turtle_state.dart';
 
 /// Raises the pen up.
 @immutable
-class PenUp implements TurtleCommand<void> {
+class PenUp implements TurtleCommand {
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
     turtle.isPenDown = false;

@@ -5,7 +5,7 @@ import '../turtle_state.dart';
 
 /// Turns left.
 @immutable
-class Left implements TurtleCommand<void> {
+class Left implements TurtleCommand {
   /// The angle.
   ///
   /// Please note that it is not radius.

@@ -3,9 +3,12 @@ import 'package:meta/meta.dart';
 import '../turtle_commands.dart';
 import '../turtle_state.dart';
 
-/// Repeats commands
+/// Asks the turtle to run a series of commands repeatedly.
+///
+/// Please note that the command contained could get how many times the
+/// loop has been repeated by the variable `repcount`.
 @immutable
-class Repeat implements TurtleCommand<void> {
+class Repeat implements TurtleCommand {
   /// How many times to repeat.
   final int Function(Map) times;
 

@@ -8,7 +8,7 @@ import '_instructions.dart';
 
 /// Sets a new color.
 @immutable
-class SetColor implements TurtleCommand<void> {
+class SetColor implements TurtleCommand {
   /// The new color.
   final Color Function(Map) color;
 

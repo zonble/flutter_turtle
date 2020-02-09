@@ -23,3 +23,9 @@ class TurtlePainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
+
+class PaintContext {
+  Canvas canvas;
+  Paint paint;
+  Offset center;
+}

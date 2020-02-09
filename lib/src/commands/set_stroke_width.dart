@@ -6,7 +6,7 @@ import '_instructions.dart';
 
 /// Sets a new stroke width.
 @immutable
-class SetStrokeWidth implements TurtleCommand<void> {
+class SetStrokeWidth implements TurtleCommand {
   /// The new width.
   final double Function(Map) width;
 

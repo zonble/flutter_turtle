@@ -3,9 +3,9 @@ import 'package:meta/meta.dart';
 import '../turtle_commands.dart';
 import '../turtle_state.dart';
 
-/// Turns right.
+/// Asks the turtle to right.
 @immutable
-class Right implements TurtleCommand<void> {
+class Right implements TurtleCommand {
   /// The angle.
   ///
   /// Please note that it is not radius.

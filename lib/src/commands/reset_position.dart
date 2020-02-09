@@ -7,7 +7,7 @@ import '../turtle_state.dart';
 
 /// Moves the turtle to center.
 @immutable
-class ResetPosition implements TurtleCommand<void> {
+class ResetPosition implements TurtleCommand {
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
     turtle.position = Offset(0.0, 0.0);

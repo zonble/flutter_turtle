@@ -4,9 +4,11 @@ import '../turtle_commands.dart';
 import '../turtle_state.dart';
 import 'forward.dart';
 
-/// Moves backward.
+/// Asks the turtle to move backward.
+///
+/// If the pen is down, draws a line.
 @immutable
-class Back implements TurtleCommand<void> {
+class Back implements TurtleCommand {
   /// The distance in points.
   final double Function(Map) distance;
 
