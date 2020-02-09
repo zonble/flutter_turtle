@@ -1,28 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'painter.dart';
 import 'turtle_commands.dart';
-import 'turtle_state.dart';
-
-class _TurtlePainter extends CustomPainter {
-  final List<Instruction> commands;
-
-  _TurtlePainter(this.commands);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    var turtle = TurtleState();
-    var context = PaintContext()
-      ..canvas = canvas
-      ..paint = (Paint()
-        ..color = turtle.color
-        ..strokeWidth = turtle.strokeWidth)
-      ..center = Offset(size.width / 2, size.height / 2);
-    commands.forEach((command) => command.exec(context));
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => true;
-}
 
 /// TurtleView takes commands and draw graphics in a canvas accordingly.
 class TurtleView extends StatefulWidget {
@@ -62,7 +41,7 @@ class _TurtleViewState extends State<TurtleView> {
 
   @override
   Widget build(BuildContext context) => CustomPaint(
-        painter: _TurtlePainter(_instructions),
+        painter: TurtlePainter(_instructions),
         size: widget.size,
         isComplex: widget.isComplex,
         child: widget.child,

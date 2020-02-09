@@ -19,8 +19,10 @@ class Repeat implements TurtleCommand<void> {
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
     var instructions = <Instruction>[];
     for (var i = 0; i < times(argv); i++) {
+      var copy = Map.from(argv);
+      copy['repcount'] = i + 1;
       var list = List<Instruction>.of(commands
-          .map((command) => command.createInstruction(turtle, argv))
+          .map((command) => command.createInstruction(turtle, copy))
           .expand((x) => x));
       instructions.addAll(list);
     }

@@ -12,7 +12,7 @@ class SetColor implements TurtleCommand<void> {
   /// The new color.
   final Color Function(Map) color;
 
-  /// Creates a new color.
+  /// Creates a new instance.
   SetColor(this.color);
 
   @override

@@ -1,4 +1,7 @@
+import 'dart:math' as math;
 import 'dart:ui';
+
+import 'package:flutter/widgets.dart';
 
 import '../turtle_commands.dart';
 
@@ -13,6 +16,36 @@ class DrawLineInstruction implements Instruction {
     final beginOffset = context.center + begin;
     final endOffset = context.center + end;
     context.canvas.drawLine(beginOffset, endOffset, context.paint);
+  }
+}
+
+class DrawTextInstruction implements Instruction {
+  final String text;
+  final Offset position;
+  final double degrees;
+  final double labelHeight;
+  final Color color;
+
+  DrawTextInstruction({
+    this.text,
+    this.position,
+    this.labelHeight,
+    this.degrees,
+    this.color,
+  });
+
+  @override
+  exec(PaintContext context) {
+    context.canvas.save();
+    context.canvas.translate(position.dx, position.dy);
+    context.canvas.rotate(math.pi * degrees / 360.0);
+
+    final span = TextSpan(
+        style: TextStyle(color: color, fontSize: labelHeight), text: text);
+    final tp = TextPainter(text: span, textDirection: TextDirection.ltr);
+    tp.layout();
+    tp.paint(context.canvas, new Offset(0.0, 0.0));
+    context.canvas.restore();
   }
 }
 

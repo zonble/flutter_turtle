@@ -39,4 +39,7 @@ class TurtleState {
 
   /// The current stroke width.
   double strokeWidth = 2;
+
+  /// Height of labels.
+  double labelHeight = 12;
 }
