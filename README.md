@@ -1,5 +1,7 @@
 # flutter_turtle
 
+[![pub package](https://img.shields.io/pub/v/flutter_turtle.svg)](https://pub.dev/packages/flutter_turtle)
+
 flutter_turtle is a simple implementation of turtle graphics for Flutter. It
 simply uses a custom painter to draw graphics by a series of Logo-like commands.
 
@@ -140,6 +142,8 @@ Currently supported commands are including:
 - GoTo
 - ResetPosition
 - ResetHeading
+- Label
+- SetLabelHeight
 
 ### Flow control
 
@@ -150,4 +154,3 @@ Currently supported commands are including:
 
 - SetMacro
 - RunMacro
-

@@ -1,3 +1,7 @@
+## 0.3.1
+
+* Adds new commands: `Label` and `SetLabelHeight`.
+
 ## 0.3.0
 
 * Adds `AnimatedTurtleView`.
