@@ -22,6 +22,8 @@
 /// - GoTo
 /// - ResetPosition
 /// - ResetHeading
+/// - Label
+/// - SetLabelHeight
 ///
 /// ### Flow Control
 ///

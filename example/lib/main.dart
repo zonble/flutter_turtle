@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_turtle_example/pages/clock_page.dart';
 import 'package:flutter_turtle_example/pages/fern_page.dart';
 
 import 'pages/flower_page.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         'red_square': (_) => RedSquarePage(),
         'tree': (_) => TreePage(),
         'fern': (_) => FernPage(),
+        'clock': (_) => ClockPage(),
       },
     );
   }
@@ -53,40 +55,25 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Wrap(
                 children: <Widget>[
                   MyTile(
-                    title: 'Logo',
-                    image: 'images/1.png',
-                    pageName: 'logo',
-                  ),
+                      title: 'Logo', image: 'images/1.png', pageName: 'logo'),
                   MyTile(
-                    title: 'Star',
-                    image: 'images/2.png',
-                    pageName: 'star',
-                  ),
+                      title: 'Star', image: 'images/2.png', pageName: 'star'),
                   MyTile(
-                    title: 'Flower',
-                    image: 'images/3.png',
-                    pageName: 'flower',
-                  ),
+                      title: 'Flower',
+                      image: 'images/3.png',
+                      pageName: 'flower'),
                   MyTile(
-                    title: 'Red Suqares',
-                    image: 'images/4.png',
-                    pageName: 'red_square',
-                  ),
+                      title: 'Red Suqares',
+                      image: 'images/4.png',
+                      pageName: 'red_square'),
                   MyTile(
-                    title: 'Tree',
-                    image: 'images/5.png',
-                    pageName: 'tree',
-                  ),
+                      title: 'Tree', image: 'images/5.png', pageName: 'tree'),
                   MyTile(
-                    title: 'Fern',
-                    image: 'images/6.png',
-                    pageName: 'fern',
-                  ),
+                      title: 'Fern', image: 'images/6.png', pageName: 'fern'),
                   MyTile(
-                    title: 'Label',
-                    image: 'images/7.png',
-                    pageName: 'label',
-                  ),
+                      title: 'Label', image: 'images/7.png', pageName: 'label'),
+                  MyTile(
+                      title: 'Clock', image: 'images/8.png', pageName: 'clock'),
                 ],
               ),
             ),
