@@ -16,7 +16,7 @@ class _ClockPageState extends State<ClockPage> {
   void initState() {
     super.initState();
     _now = DateTime.now();
-    _timer = Timer(Duration(seconds: 1), () {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       final now = DateTime.now();
       if (now.minute != _now.minute) {
         setState(() => _now = now);
@@ -42,7 +42,10 @@ class _ClockPageState extends State<ClockPage> {
         actions: <Widget>[
           FlatButton(
             textColor: Colors.white,
-            onPressed: () => setState(() {}),
+            onPressed: () => setState(() {
+              final now = DateTime.now();
+              _now = now;
+            }),
             child: Text('Run'),
           )
         ],

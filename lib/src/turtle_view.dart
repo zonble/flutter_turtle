@@ -31,19 +31,14 @@ class TurtleView extends StatefulWidget {
 }
 
 class _TurtleViewState extends State<TurtleView> {
-  List<Instruction> _instructions = [];
-
   @override
-  void initState() {
-    super.initState();
-    _instructions = TurtleCompiler.compile(widget.commands);
+  Widget build(BuildContext context) {
+    List<Instruction> instructions = TurtleCompiler.compile(widget.commands);
+    return CustomPaint(
+      painter: TurtlePainter(instructions),
+      size: widget.size,
+      isComplex: widget.isComplex,
+      child: widget.child,
+    );
   }
-
-  @override
-  Widget build(BuildContext context) => CustomPaint(
-        painter: TurtlePainter(_instructions),
-        size: widget.size,
-        isComplex: widget.isComplex,
-        child: widget.child,
-      );
 }

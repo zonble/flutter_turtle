@@ -42,7 +42,6 @@ class _AnimatedTurtleViewState extends State<AnimatedTurtleView>
   @override
   void initState() {
     super.initState();
-    _instructions = TurtleCompiler.compile(widget.commands);
     _controller = AnimationController(
       duration: widget.animationDuration,
       vsync: this,
@@ -57,6 +56,7 @@ class _AnimatedTurtleViewState extends State<AnimatedTurtleView>
 
   @override
   Widget build(BuildContext context) {
+    _instructions = TurtleCompiler.compile(widget.commands);
     _controller.value = 0;
     _controller.forward();
     return AnimatedBuilder(
