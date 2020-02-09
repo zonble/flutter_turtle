@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_turtle_example/pages/clock_page.dart';
 import 'package:flutter_turtle_example/pages/fern_page.dart';
 
+import 'pages/clock2_page.dart';
 import 'pages/flower_page.dart';
 import 'pages/label.dart';
 import 'pages/logo_page.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         'tree': (_) => TreePage(),
         'fern': (_) => FernPage(),
         'clock': (_) => ClockPage(),
+        'clock2': (_) => Clock2Page(),
       },
     );
   }
@@ -45,6 +47,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    var tiles = <Widget>[
+      MyTile(title: 'Logo', image: 'images/1.png', pageName: 'logo'),
+      MyTile(title: 'Star', image: 'images/2.png', pageName: 'star'),
+      MyTile(title: 'Flower', image: 'images/3.png', pageName: 'flower'),
+      MyTile(
+          title: 'Red Suqares', image: 'images/4.png', pageName: 'red_square'),
+      MyTile(title: 'Tree', image: 'images/5.png', pageName: 'tree'),
+      MyTile(title: 'Fern', image: 'images/6.png', pageName: 'fern'),
+      MyTile(title: 'Label', image: 'images/7.png', pageName: 'label'),
+      MyTile(title: 'Clock', image: 'images/8.png', pageName: 'clock'),
+      MyTile(title: 'Clock', image: 'images/9.png', pageName: 'clock2'),
+    ];
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
       body: SingleChildScrollView(
@@ -53,28 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.only(top: 10.0, bottom: 10),
             child: Center(
               child: Wrap(
-                children: <Widget>[
-                  MyTile(
-                      title: 'Logo', image: 'images/1.png', pageName: 'logo'),
-                  MyTile(
-                      title: 'Star', image: 'images/2.png', pageName: 'star'),
-                  MyTile(
-                      title: 'Flower',
-                      image: 'images/3.png',
-                      pageName: 'flower'),
-                  MyTile(
-                      title: 'Red Suqares',
-                      image: 'images/4.png',
-                      pageName: 'red_square'),
-                  MyTile(
-                      title: 'Tree', image: 'images/5.png', pageName: 'tree'),
-                  MyTile(
-                      title: 'Fern', image: 'images/6.png', pageName: 'fern'),
-                  MyTile(
-                      title: 'Label', image: 'images/7.png', pageName: 'label'),
-                  MyTile(
-                      title: 'Clock', image: 'images/8.png', pageName: 'clock'),
-                ],
+                children: tiles,
               ),
             ),
           ),
