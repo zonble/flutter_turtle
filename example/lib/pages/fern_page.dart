@@ -43,7 +43,7 @@ class _FernPageState extends State<FernPage> {
                   'fern', (_) => {'size': _['size'] - 1.0, 'sign': _['sign']}),
               Left((_) => 7.0 * _['sign']),
               Back((_) => _['size'] * 2.0),
-            ]),
+            ])
           ]),
           Back((_) => 150.0),
           PenDown(),

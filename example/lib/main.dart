@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_turtle_example/pages/clock_page.dart';
 import 'package:flutter_turtle_example/pages/fern_page.dart';
+import 'package:flutter_turtle_example/pages/spiral.dart';
 
 import 'pages/clock2_page.dart';
 import 'pages/flower_page.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         'fern': (_) => FernPage(),
         'clock': (_) => ClockPage(),
         'clock2': (_) => Clock2Page(),
+        'spiral': (_) => SpiralPage(),
       },
     );
   }
@@ -58,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
       MyTile(title: 'Label', image: 'images/7.png', pageName: 'label'),
       MyTile(title: 'Clock', image: 'images/8.png', pageName: 'clock'),
       MyTile(title: 'Clock', image: 'images/9.png', pageName: 'clock2'),
+      MyTile(title: 'Spiral', image: 'images/10.png', pageName: 'spiral'),
     ];
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
