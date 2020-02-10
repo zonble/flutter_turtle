@@ -28,10 +28,7 @@ class _StarPageState extends State<StarPage> {
           PenDown(),
           SetColor((_) => Colors.red),
           SetStrokeWidth((_) => 2),
-          Repeat((_) => 5, [
-            Forward((_) => 200),
-            Right((_) => 144),
-          ]),
+          Repeat((_) => 5, [Forward((_) => 200), Right((_) => 144)]),
           PenUp(),
         ],
       ),

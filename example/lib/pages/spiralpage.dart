@@ -9,6 +9,15 @@ class SpiralPage extends StatefulWidget {
 class _SpiralState extends State<SpiralPage> {
   @override
   Widget build(BuildContext context) {
+    var commands = [
+      PenDown(),
+      SetColor((_) => Color(0xffff9933)),
+      SetStrokeWidth((_) => 2),
+      Repeat((_) => 200,
+          [Left((_) => 60), Forward((_) => _['repcount'].toDouble() * 2)]),
+      PenUp(),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Spiral'),
@@ -20,17 +29,12 @@ class _SpiralState extends State<SpiralPage> {
           )
         ],
       ),
-      body: AnimatedTurtleView(
-        animationDuration: Duration(seconds: 3),
-        child: Container(),
-        commands: [
-          PenDown(),
-          SetColor((_) => Color(0xffff9933)),
-          SetStrokeWidth((_) => 2),
-          Repeat((_) => 200,
-              [Left((_) => 60), Forward((_) => _['repcount'].toDouble() * 2)]),
-          PenUp(),
-        ],
+      body: ClipRect(
+        child: AnimatedTurtleView(
+          animationDuration: Duration(seconds: 3),
+          child: Container(),
+          commands: commands,
+        ),
       ),
     );
   }

@@ -35,6 +35,41 @@ class _ClockPageState extends State<Clock2Page> {
     var hour = (_now.hour % 12);
     var min = _now.minute;
 
+    var commands = [
+      SetStrokeWidth((_) => 2),
+      Repeat((_) => min + 1, [
+        PenDown(),
+        SetColor((_) =>
+            Colors.black.withOpacity(_['repcount'].toDouble() / (min + 1))),
+        Forward((_) => 100 / (min + 1).toDouble() * _['repcount'] + 50),
+        PenUp(),
+        Back((_) => 100 / (min + 1).toDouble() * _['repcount'] + 50),
+        Right((_) => 6),
+      ]),
+      ResetHeading(),
+      SetStrokeWidth((_) => 20),
+      Repeat((_) => hour + 1, [
+        PenDown(),
+        SetColor((_) =>
+            Colors.red.withOpacity(_['repcount'].toDouble() / (hour + 1))),
+        Forward((_) => 100 / (hour + 1).toDouble() * _['repcount']),
+        PenUp(),
+        Back((_) => 100 / (hour + 1).toDouble() * _['repcount']),
+        Right((_) => 30),
+      ]),
+      ResetHeading(),
+      SetColor((_) => Colors.black),
+      SetStrokeWidth((_) => 4),
+      Repeat((_) => 12, [
+        Right((_) => 30),
+        Forward((_) => 150),
+        PenDown(),
+        Forward((_) => 10),
+        PenUp(),
+        Forward((_) => 40),
+        Back((_) => 200),
+      ]),
+    ];
     return Scaffold(
       appBar: AppBar(
         title: Text('Clock'),
@@ -52,41 +87,7 @@ class _ClockPageState extends State<Clock2Page> {
       body: AnimatedTurtleView(
         animationDuration: Duration(seconds: 1),
         child: Container(),
-        commands: [
-          SetStrokeWidth((_) => 2),
-          Repeat((_) => min + 1, [
-            PenDown(),
-            SetColor((_) =>
-                Colors.black.withOpacity(_['repcount'].toDouble() / (min + 1))),
-            Forward((_) => 100 / (min + 1).toDouble() * _['repcount'] + 50),
-            PenUp(),
-            Back((_) => 100 / (min + 1).toDouble() * _['repcount'] + 50),
-            Right((_) => 6),
-          ]),
-          ResetHeading(),
-          SetStrokeWidth((_) => 20),
-          Repeat((_) => hour + 1, [
-            PenDown(),
-            SetColor((_) =>
-                Colors.red.withOpacity(_['repcount'].toDouble() / (hour + 1))),
-            Forward((_) => 100 / (hour + 1).toDouble() * _['repcount']),
-            PenUp(),
-            Back((_) => 100 / (hour + 1).toDouble() * _['repcount']),
-            Right((_) => 30),
-          ]),
-          ResetHeading(),
-          SetColor((_) => Colors.black),
-          SetStrokeWidth((_) => 4),
-          Repeat((_) => 12, [
-            Right((_) => 30),
-            Forward((_) => 150),
-            PenDown(),
-            Forward((_) => 10),
-            PenUp(),
-            Forward((_) => 40),
-            Back((_) => 200),
-          ]),
-        ],
+        commands: commands,
       ),
     );
   }

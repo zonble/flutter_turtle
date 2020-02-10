@@ -9,6 +9,17 @@ class LogoPage extends StatefulWidget {
 class _LogoPageState extends State<LogoPage> {
   @override
   Widget build(BuildContext context) {
+    var commands = [
+      PenDown(),
+      SetColor((_) => Color(0xffff9933)),
+      SetStrokeWidth((_) => 2),
+      Repeat((_) => 20, [
+        Repeat((_) => 180, [Forward((_) => 25.0), Right((_) => 20)]),
+        Right((_) => 18),
+      ]),
+      PenUp(),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Logo'),
@@ -40,19 +51,7 @@ class _LogoPageState extends State<LogoPage> {
                 width: double.infinity,
                 height: 400,
               ),
-              commands: [
-                PenDown(),
-                SetColor((_) => Color(0xffff9933)),
-                SetStrokeWidth((_) => 2),
-                Repeat((_) => 20, [
-                  Repeat((_) => 180, [
-                    Forward((_) => 25.0),
-                    Right((_) => 20),
-                  ]),
-                  Right((_) => 18),
-                ]),
-                PenUp(),
-              ],
+              commands: commands,
             ),
           ],
         ),

@@ -9,6 +9,17 @@ class RedSquarePage extends StatefulWidget {
 class _RedSquarePageState extends State<RedSquarePage> {
   @override
   Widget build(BuildContext context) {
+    var commands = [
+      PenDown(),
+      SetStrokeWidth((_) => 1),
+      SetColor((_) => Colors.red),
+      Repeat((_) => 77, [
+        Repeat((_) => 4, [Forward((_) => 100.0), Right((_) => 90)]),
+        Right((_) => 5)
+      ]),
+      PenUp(),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Red Suqares'),
@@ -30,24 +41,8 @@ class _RedSquarePageState extends State<RedSquarePage> {
                   'http://www.logointerpreter.com/view-program.php?user=Josefminecraft&program=77%20red%20sqares'),
             ),
             AnimatedTurtleView(
-              child: Container(
-                width: double.infinity,
-                height: 400.0,
-              ),
-              commands: [
-                PenDown(),
-                SetStrokeWidth((_) => 1),
-                SetColor((_) => Colors.red),
-                Repeat((_) => 77, [
-                  Repeat((_) => 4, [
-                    Forward((_) => 100.0),
-                    Right((_) => 90),
-                  ]),
-                  Right((_) => 5),
-                ]),
-                PenUp(),
-              ],
-            ),
+                child: Container(width: double.infinity, height: 400.0),
+                commands: commands),
           ],
         ),
       ),
