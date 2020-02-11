@@ -27,6 +27,7 @@
 ///
 /// ### Flow Control
 ///
+/// - If
 /// - IfElse
 /// - Repeat
 ///
@@ -42,6 +43,7 @@ export 'src/animated_turtle_view.dart';
 export 'src/commands/back.dart';
 export 'src/commands/forward.dart';
 export 'src/commands/go_to.dart';
+export 'src/commands/if.dart';
 export 'src/commands/if_else.dart';
 export 'src/commands/label.dart';
 export 'src/commands/left.dart';

@@ -1,6 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
-import 'dart:math';
 
 class FlowerPage extends StatefulWidget {
   @override
@@ -23,8 +24,22 @@ class _FlowerPageState extends State<FlowerPage> {
       return colors[Random().nextInt(colors.length)];
     }
 
+    var commands = [
+      PenDown(),
+      Repeat((_) => 8, [
+        SetColor((_) => randomColor()),
+        Repeat((_) => 2, [
+          Repeat((_) => 100, [Forward((_) => 2.0), Right((_) => 1.0)]),
+          Right((_) => 80.0)
+        ]),
+        Right((_) => 45.0),
+      ]),
+      PenUp(),
+    ];
+
     return Scaffold(
-      appBar: AppBar(title: Text('Flower'),
+      appBar: AppBar(
+        title: Text('Flower'),
         actions: <Widget>[
           FlatButton(
             textColor: Colors.white,
@@ -47,21 +62,7 @@ class _FlowerPageState extends State<FlowerPage> {
               width: double.infinity,
               height: 400,
             ),
-            commands: [
-              PenDown(),
-              Repeat((_) => 8, [
-                SetColor((_) => randomColor()),
-                Repeat((_) => 2, [
-                  Repeat((_) => 100, [
-                    Forward((_) => 2.0),
-                    Right((_) => 1.0),
-                  ]),
-                  Right((_) => 80.0)
-                ]),
-                Right((_) => 45.0),
-              ]),
-              PenUp(),
-            ],
+            commands: commands,
           ),
         ],
       ),
