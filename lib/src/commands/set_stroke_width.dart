@@ -15,7 +15,7 @@ class SetStrokeWidth implements TurtleCommand {
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
-    final newWidth = width(Map.of(argv));
+    final newWidth = (width == null) ? 1.0 : width(Map.of(argv));
     turtle.strokeWidth = newWidth;
     return [SetStrokeWidthInstruction(newWidth)];
   }

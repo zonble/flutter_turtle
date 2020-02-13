@@ -22,8 +22,10 @@ class Repeat implements TurtleCommand {
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
+    if (times == null || commands == null || commands.isEmpty) return [];
+
     var instructions = <Instruction>[];
-    for (var i = 0; i < times(argv); i++) {
+    for (var i = 0; i < times(Map.from(argv)); i++) {
       var copy = Map.from(argv);
       copy[repcount] = i + 1;
       var list = List<Instruction>.of(commands

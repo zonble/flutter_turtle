@@ -20,8 +20,9 @@ class IfElse implements TurtleCommand {
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
+    if (condition == null) return [];
     final copy = Map.of(argv);
-    final commands = (condition(copy) ? truePath : falsePath);
+    final commands = (condition(copy) ? (truePath ?? []) : (falsePath ?? []));
     return List<Instruction>.of(commands
         .map((command) => command.createInstruction(turtle, copy))
         .expand((x) => x));

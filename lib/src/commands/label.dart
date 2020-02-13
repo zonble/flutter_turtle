@@ -14,10 +14,11 @@ class Label implements TurtleCommand {
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
-    var labelText = text(argv);
+    if (text == null) return [];
+
     return [
       DrawTextInstruction(
-        text: labelText,
+        text: text(Map.of(argv)),
         color: turtle.color,
         degrees: turtle.degrees,
         position: turtle.position,

@@ -18,6 +18,7 @@ class Back implements TurtleCommand {
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
     final copy = Map.of(argv);
-    return Forward((_) => distance(copy) * -1).createInstruction(turtle, copy);
+    return Forward((_) => (distance == null) ? 1 : distance(copy) * -1)
+        .createInstruction(turtle, copy);
   }
 }

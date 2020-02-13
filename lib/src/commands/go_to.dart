@@ -19,6 +19,8 @@ class GoTo implements TurtleCommand {
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
+    if (position == null) return [];
+
     final currentPosition = turtle.position;
     turtle.position = position(Map.of(argv));
 

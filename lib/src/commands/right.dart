@@ -16,7 +16,7 @@ class Right implements TurtleCommand {
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
-    turtle.degrees += degrees(Map.of(argv));
+    turtle.degrees += (degrees == null) ? 90.0 : degrees(Map.of(argv));
     return [];
   }
 }

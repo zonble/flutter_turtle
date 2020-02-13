@@ -3,7 +3,6 @@ import 'package:meta/meta.dart';
 import '../turtle_commands.dart';
 import '../turtle_state.dart';
 
-
 /// Sets a macro.
 @immutable
 class SetMacro implements TurtleCommand {
@@ -18,6 +17,10 @@ class SetMacro implements TurtleCommand {
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
+    if (name == null || commands == null) {
+      throw Exception('Invalid macro');
+    }
+
     turtle.macros[name] = Macro(commands: commands);
     return [];
   }
