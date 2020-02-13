@@ -1,3 +1,8 @@
+## 0.3.2
+
+* Adda a new command `if`.
+* Prevents null exceptions.
+
 ## 0.3.1
 
 * Adds new commands: `Label` and `SetLabelHeight`.

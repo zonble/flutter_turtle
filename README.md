@@ -147,6 +147,7 @@ Currently supported commands are including:
 
 ### Flow control
 
+- If
 - IfElse
 - Repeat
 
