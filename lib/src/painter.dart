@@ -4,9 +4,9 @@ import 'turtle_commands.dart';
 import 'turtle_state.dart';
 
 class TurtlePainter extends CustomPainter {
-  final List<Instruction> commands;
+  final List<Instruction> instructions;
 
-  TurtlePainter(this.commands);
+  TurtlePainter(this.instructions);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -17,7 +17,7 @@ class TurtlePainter extends CustomPainter {
         ..color = turtle.color
         ..strokeWidth = turtle.strokeWidth)
       ..center = Offset(size.width / 2, size.height / 2);
-    commands.forEach((command) => command.exec(context));
+    instructions.forEach((command) => command.exec(context));
   }
 
   @override
