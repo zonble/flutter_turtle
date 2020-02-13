@@ -18,10 +18,10 @@ class TurtleView extends StatefulWidget {
   final bool isComplex;
 
   /// Creates a new instance.
-  TurtleView({
+  const TurtleView({
     Key key,
+    @required this.commands,
     this.child,
-    this.commands,
     this.isComplex = false,
     this.size = Size.zero,
   }) : super(key: key);

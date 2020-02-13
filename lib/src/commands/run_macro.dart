@@ -24,16 +24,17 @@ class RunMacro implements TurtleCommand {
       throw Exception('Macro does not exist');
     }
 
-    var width = turtle.strokeWidth;
-    var color = turtle.color;
-    var degrees = turtle.degrees;
-    var position = turtle.position;
+    final width = turtle.strokeWidth;
+    final color = turtle.color;
+    final degrees = turtle.degrees;
+    final position = turtle.position;
 
     var instructions = <Instruction>[];
-    var arg = this.macroArgv(argv);
+    var copy = Map.of(argv);
+    copy.addAll(this.macroArgv(argv));
     try {
       var list = List<Instruction>.of(macro.commands
-          .map((command) => command.createInstruction(turtle, arg))
+          .map((command) => command.createInstruction(turtle, copy))
           .expand((x) => x));
       instructions.addAll(list);
     } on StopException catch (_) {}

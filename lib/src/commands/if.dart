@@ -17,10 +17,11 @@ class If implements TurtleCommand {
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
-    if (!condition(argv)) return [];
-    var instructions = List<Instruction>.of(commands
-        .map((command) => command.createInstruction(turtle, argv))
-        .expand((x) => x));
-    return instructions;
+    final copy = Map.of(argv);
+    return condition(copy)
+        ? List<Instruction>.of(commands
+            .map((command) => command.createInstruction(turtle, copy))
+            .expand((x) => x))
+        : [];
   }
 }

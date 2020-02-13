@@ -13,7 +13,7 @@ class SetLabelHeight implements TurtleCommand {
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
-    turtle.labelHeight = height(argv);
+    turtle.labelHeight = height(Map.of(argv));
     return [];
   }
 }

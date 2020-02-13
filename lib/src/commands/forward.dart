@@ -22,8 +22,9 @@ class Forward implements TurtleCommand {
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
+    final copy = Map.of(argv);
     final radians = _angleToRadians(turtle.degrees);
-    final distance = this.distance(argv);
+    final distance = this.distance(copy);
     final dx = math.cos(radians) * distance;
     final dy = math.sin(radians) * distance;
     final currentPosition = turtle.position;

@@ -14,12 +14,13 @@ abstract class Instruction<T> {
 
 /// Compiles a list of [TurtleCommand] to a list of [Instruction].
 class TurtleCompiler {
+  /// Compiles commands to instructions.
   static List<Instruction> compile(List<TurtleCommand> commands) {
     var turtle = TurtleState();
     var argv = {};
-    var list = List<Instruction>.of(commands
+    var instructions = List<Instruction>.of(commands
         .map((command) => command.createInstruction(turtle, argv))
         .expand((x) => x));
-    return list;
+    return instructions;
   }
 }

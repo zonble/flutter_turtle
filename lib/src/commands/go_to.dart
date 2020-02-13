@@ -20,11 +20,10 @@ class GoTo implements TurtleCommand {
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
     final currentPosition = turtle.position;
-    turtle.position = position(argv);
+    turtle.position = position(Map.of(argv));
 
-    if (turtle.isPenDown) {
-      return [DrawLineInstruction(currentPosition, turtle.position)];
-    }
-    return [];
+    return turtle.isPenDown
+        ? [DrawLineInstruction(currentPosition, turtle.position)]
+        : [];
   }
 }

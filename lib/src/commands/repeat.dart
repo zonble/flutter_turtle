@@ -3,6 +3,8 @@ import 'package:meta/meta.dart';
 import '../turtle_commands.dart';
 import '../turtle_state.dart';
 
+const repcount = 'repcount';
+
 /// Asks the turtle to run a series of commands repeatedly.
 ///
 /// Please note that the command contained could get how many times the
@@ -23,7 +25,7 @@ class Repeat implements TurtleCommand {
     var instructions = <Instruction>[];
     for (var i = 0; i < times(argv); i++) {
       var copy = Map.from(argv);
-      copy['repcount'] = i + 1;
+      copy[repcount] = i + 1;
       var list = List<Instruction>.of(commands
           .map((command) => command.createInstruction(turtle, copy))
           .expand((x) => x));

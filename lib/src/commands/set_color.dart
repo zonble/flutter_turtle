@@ -17,7 +17,8 @@ class SetColor implements TurtleCommand {
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
-    final newColor = color(argv);
+    final copy = Map.of(argv);
+    final newColor = color(copy);
     turtle.color = newColor;
     return [SetColorInstruction(newColor)];
   }

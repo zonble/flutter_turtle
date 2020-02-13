@@ -17,14 +17,14 @@ class AnimatedTurtleView extends StatefulWidget {
   /// Whether the painting is complex enough to benefit from caching.
   final bool isComplex;
 
-  /// The duration of the animation.
+  /// The duration of the animation. 3 seconds by default.
   final Duration animationDuration;
 
   /// Creates a new instance.
-  AnimatedTurtleView({
+  const AnimatedTurtleView({
     Key key,
+    @required this.commands,
     this.child,
-    this.commands,
     this.isComplex = false,
     this.size = Size.zero,
     this.animationDuration = const Duration(seconds: 3),
@@ -42,6 +42,7 @@ class _AnimatedTurtleViewState extends State<AnimatedTurtleView>
   @override
   void initState() {
     super.initState();
+    _instructions = TurtleCompiler.compile(widget.commands);
     _controller = AnimationController(
       duration: widget.animationDuration,
       vsync: this,
@@ -55,8 +56,17 @@ class _AnimatedTurtleViewState extends State<AnimatedTurtleView>
   }
 
   @override
+  void didUpdateWidget(AnimatedTurtleView oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.commands != oldWidget.commands) {
+      setState(() {
+        _instructions = TurtleCompiler.compile(widget.commands);
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    _instructions = TurtleCompiler.compile(widget.commands);
     _controller.value = 0;
     _controller.forward();
     return AnimatedBuilder(
