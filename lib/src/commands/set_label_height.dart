@@ -3,6 +3,9 @@ import 'package:meta/meta.dart';
 import '../turtle_commands.dart';
 import '../turtle_state.dart';
 
+/// Sets the height of the labels.
+/// 
+/// You can use [Label] to draw texts.
 @immutable
 class SetLabelHeight implements TurtleCommand {
   /// The new height.

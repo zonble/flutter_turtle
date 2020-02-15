@@ -4,6 +4,10 @@ import '../turtle_commands.dart';
 import '../turtle_state.dart';
 import '_instructions.dart';
 
+/// Draws texts.
+///
+/// You can use [SetLabelHeight] to set the size of the text, and use
+/// [SetColor] to set the color.
 @immutable
 class Label implements TurtleCommand {
   /// The text.

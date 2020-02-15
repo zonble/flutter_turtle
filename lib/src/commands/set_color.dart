@@ -6,7 +6,7 @@ import '../turtle_commands.dart';
 import '../turtle_state.dart';
 import '_instructions.dart';
 
-/// Sets a new color.
+/// Sets a new color for drawing lines and texts.
 @immutable
 class SetColor implements TurtleCommand {
   /// The new color.

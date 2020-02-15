@@ -4,7 +4,7 @@ import '../turtle_commands.dart';
 import '../turtle_state.dart';
 import '_exceptions.dart';
 
-/// Stops drawing.
+/// Stops the current running macro.
 @immutable
 class Stop implements TurtleCommand {
   @override

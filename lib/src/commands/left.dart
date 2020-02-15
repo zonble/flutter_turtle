@@ -3,7 +3,9 @@ import 'package:meta/meta.dart';
 import '../turtle_commands.dart';
 import '../turtle_state.dart';
 
-/// Turns left.
+/// Asks the turtle to turn left with the given [degrees].
+///
+/// See also [Right].
 @immutable
 class Left implements TurtleCommand {
   /// The angle.

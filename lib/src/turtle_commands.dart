@@ -18,9 +18,12 @@ class TurtleCompiler {
   static List<Instruction> compile(List<TurtleCommand> commands) {
     var turtle = TurtleState();
     var argv = {};
-    var instructions = List<Instruction>.of(commands
-        .map((command) => command.createInstruction(turtle, argv))
-        .expand((x) => x));
+    var instructions = <Instruction>[];
+    try {
+      for (var command in commands) {
+        instructions.addAll(command.createInstruction(turtle, argv));
+      }
+    } catch (StopException) {}
     return instructions;
   }
 }

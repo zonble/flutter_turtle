@@ -30,9 +30,8 @@ class Forward implements TurtleCommand {
     final currentPosition = turtle.position;
     turtle.position = currentPosition + Offset(dx, dy);
 
-    if (turtle.isPenDown) {
-      return [DrawLineInstruction(currentPosition, turtle.position)];
-    }
-    return [];
+    return turtle.isPenDown
+        ? [DrawLineInstruction(currentPosition, turtle.position)]
+        : [];
   }
 }
