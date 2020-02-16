@@ -58,7 +58,7 @@ class _ControllableTurtleViewState extends State<ControllableTurtleView> {
       animation: widget.controller,
       builder: (context, child) {
         double value = widget.controller.value;
-        if (value > 0) value = 0;
+        if (value < 0) value = 0;
         if (value > 1) value = 1;
         var instructions =
             _instructions.sublist(0, (_instructions.length * value).toInt());

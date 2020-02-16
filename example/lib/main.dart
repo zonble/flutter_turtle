@@ -1,17 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_turtle_example/pages/clock_page.dart';
-import 'package:flutter_turtle_example/pages/fern_page.dart';
-import 'package:flutter_turtle_example/pages/spiralpage.dart';
 
 import 'pages/clock2_page.dart';
+import 'pages/clock_page.dart';
+import 'pages/fern_page.dart';
 import 'pages/flower_page.dart';
 import 'pages/label.dart';
+import 'pages/logo_controller_page.dart';
 import 'pages/logo_page.dart';
 import 'pages/red_square_page.dart';
+import 'pages/spiral2page.dart';
+import 'pages/spiralpage.dart';
 import 'pages/star_page.dart';
 import 'pages/tree_page.dart';
-import 'pages/spiral2page.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,12 +26,13 @@ class MyApp extends StatelessWidget {
       routes: {
         'label': (_) => LabelPage(),
         'logo': (_) => LogoPage(),
+        'logo_controller': (_) => LogoControllerPage(),
         'star': (_) => StarPage(),
         'flower': (_) => FlowerPage(),
         'red_square': (_) => RedSquarePage(),
         'tree': (_) => TreePage(),
         'fern': (_) => FernPage(),
-        'clock': (_) => ClockPage(),
+        'clock1': (_) => ClockPage(),
         'clock2': (_) => Clock2Page(),
         'spiral': (_) => SpiralPage(),
         'spiral2': (_) => Spiral2Page(),
@@ -53,6 +55,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     var tiles = <Widget>[
       MyTile(title: 'Logo', image: 'images/1.png', pageName: 'logo'),
+      MyTile(
+          title: 'Logo with Controller',
+          image: 'images/1.png',
+          pageName: 'logo_controller'),
       MyTile(title: 'Star', image: 'images/2.png', pageName: 'star'),
       MyTile(title: 'Flower', image: 'images/3.png', pageName: 'flower'),
       MyTile(
@@ -60,26 +66,20 @@ class _MyHomePageState extends State<MyHomePage> {
       MyTile(title: 'Tree', image: 'images/5.png', pageName: 'tree'),
       MyTile(title: 'Fern', image: 'images/6.png', pageName: 'fern'),
       MyTile(title: 'Label', image: 'images/7.png', pageName: 'label'),
-      MyTile(title: 'Clock', image: 'images/8.png', pageName: 'clock'),
+      MyTile(title: 'Clock', image: 'images/8.png', pageName: 'clock1'),
       MyTile(title: 'Clock', image: 'images/9.png', pageName: 'clock2'),
       MyTile(title: 'Spiral', image: 'images/10.png', pageName: 'spiral'),
       MyTile(title: 'Spiral', image: 'images/11.png', pageName: 'spiral2'),
     ];
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 10.0, bottom: 10),
-            child: Center(
-              child: Wrap(
-                children: tiles,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
+        appBar: AppBar(title: Text(widget.title)),
+        body: SingleChildScrollView(
+            child: SafeArea(
+                child: Padding(
+                    padding: const EdgeInsets.only(top: 10.0, bottom: 10),
+                    child: Center(
+                      child: Wrap(children: tiles),
+                    )))));
   }
 }
 
