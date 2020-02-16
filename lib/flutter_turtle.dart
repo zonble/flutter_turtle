@@ -59,6 +59,7 @@ export 'src/commands/set_label_height.dart';
 export 'src/commands/set_macro.dart';
 export 'src/commands/set_stroke_width.dart';
 export 'src/commands/stop.dart';
+export 'src/controllable_turtle_view.dart';
 export 'src/turtle_commands.dart';
 export 'src/turtle_state.dart';
 export 'src/turtle_view.dart';

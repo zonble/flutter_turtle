@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'painter.dart';
 import 'turtle_commands.dart';
 
-/// The animated turtle view.
+/// A widget takes [commands] and draw Turtle Graphics with animations.
+///
+/// The widget animated when you build it. You can use the [animationDuration]
+/// property to set the duration of the animations.
 class AnimatedTurtleView extends StatefulWidget {
   /// The commands.
   final List<TurtleCommand> commands;
@@ -43,10 +46,8 @@ class _AnimatedTurtleViewState extends State<AnimatedTurtleView>
   void initState() {
     super.initState();
     _instructions = TurtleCompiler.compile(widget.commands);
-    _controller = AnimationController(
-      duration: widget.animationDuration,
-      vsync: this,
-    );
+    _controller =
+        AnimationController(duration: widget.animationDuration, vsync: this);
   }
 
   @override
@@ -59,9 +60,7 @@ class _AnimatedTurtleViewState extends State<AnimatedTurtleView>
   void didUpdateWidget(AnimatedTurtleView oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.commands != oldWidget.commands) {
-      setState(() {
-        _instructions = TurtleCompiler.compile(widget.commands);
-      });
+      setState(() => _instructions = TurtleCompiler.compile(widget.commands));
     }
   }
 

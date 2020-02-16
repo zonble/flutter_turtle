@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'painter.dart';
 import 'turtle_commands.dart';
 
-/// TurtleView takes commands and draw graphics in a canvas accordingly.
+/// A widget takes [commands] and draw Turtle Graphics in a canvas accordingly.
+/// 
+/// The widget does not have any animation effects.
 class TurtleView extends StatefulWidget {
   /// The commands.
   final List<TurtleCommand> commands;
