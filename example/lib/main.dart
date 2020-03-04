@@ -9,6 +9,7 @@ import 'pages/label.dart';
 import 'pages/logo_controller_page.dart';
 import 'pages/logo_page.dart';
 import 'pages/red_square_page.dart';
+import 'pages/snowflake_page.dart';
 import 'pages/spiral2page.dart';
 import 'pages/spiralpage.dart';
 import 'pages/star_page.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         'clock2': (_) => Clock2Page(),
         'spiral': (_) => SpiralPage(),
         'spiral2': (_) => Spiral2Page(),
+        'snowflake': (_) => SnowflakePage(),
       },
     );
   }
@@ -70,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
       MyTile(title: 'Clock', image: 'images/9.png', pageName: 'clock2'),
       MyTile(title: 'Spiral', image: 'images/10.png', pageName: 'spiral'),
       MyTile(title: 'Spiral', image: 'images/11.png', pageName: 'spiral2'),
+      MyTile(title: 'Snowflake', image: 'images/12.png', pageName: 'snowflake'),
     ];
     return Scaffold(
         appBar: AppBar(title: Text(widget.title)),
