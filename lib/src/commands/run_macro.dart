@@ -14,8 +14,15 @@ class RunMacro implements TurtleCommand {
   /// The arguments.
   final Function(Map) macroArgv;
 
+  /// If we want to preserve the previous state. True by default.
+  final bool preserveState;
+
   /// Creates a new instance.
-  RunMacro(this.name, this.macroArgv);
+  RunMacro(
+    this.name,
+    this.macroArgv, {
+    this.preserveState = true,
+  });
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
@@ -45,13 +52,15 @@ class RunMacro implements TurtleCommand {
       instructions.addAll(list);
     } on StopException catch (_) {}
 
-    instructions.addAll(<Instruction>[
-      SetStrokeWidthInstruction(width),
-      SetColorInstruction(color),
-    ]);
+    if (preserveState) {
+      instructions.addAll(<Instruction>[
+        SetStrokeWidthInstruction(width),
+        SetColorInstruction(color),
+      ]);
 
-    turtle.degrees = degrees;
-    turtle.position = position;
+      turtle.degrees = degrees;
+      turtle.position = position;
+    }
     return instructions;
   }
 }

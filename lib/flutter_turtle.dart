@@ -47,6 +47,7 @@ export 'src/commands/if.dart';
 export 'src/commands/if_else.dart';
 export 'src/commands/label.dart';
 export 'src/commands/left.dart';
+export 'src/commands/log.dart';
 export 'src/commands/pen_down.dart';
 export 'src/commands/pen_up.dart';
 export 'src/commands/repeat.dart';
