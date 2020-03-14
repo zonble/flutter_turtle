@@ -1,10 +1,14 @@
+## 0.3.4
+
+* Adds a new command `Log`.
+
 ## 0.3.3
 
-* Adds a new class "ControllableTurtleView".
+* Adds a new class `ControllableTurtleView`.
 
 ## 0.3.2
 
-* Adds a new command `if`.
+* Adds a new command `If`.
 * Prevents null exceptions.
 
 ## 0.3.1
