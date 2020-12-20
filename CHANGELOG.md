@@ -1,3 +1,7 @@
+## 0.3.4-nullsafety.0
+
+* Supports null safety.
+
 ## 0.3.4
 
 * Adds a new command `Log`.
