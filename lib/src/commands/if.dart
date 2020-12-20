@@ -17,8 +17,6 @@ class If implements TurtleCommand {
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
-    if (commands == null) return [];
-
     final copy = Map.of(argv);
     return condition(copy)
         ? List<Instruction>.of(commands

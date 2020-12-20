@@ -26,10 +26,6 @@ class RunMacro implements TurtleCommand {
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
-    if (name == null) {
-      throw Exception('Macro does not exist');
-    }
-
     var macro = turtle.macros[name];
     if (macro == null) {
       throw Exception('Macro does not exist');
@@ -41,12 +37,9 @@ class RunMacro implements TurtleCommand {
     final position = turtle.position;
 
     var instructions = <Instruction>[];
-    var copy = Map.of(argv);
-    if (this.macroArgv != null) {
-      copy.addAll(this.macroArgv(argv));
-    }
+    var copy = Map.of(argv)..addAll(this.macroArgv(argv));
     try {
-      var list = List<Instruction>.of(macro.commands
+      var list = List<Instruction>.of(macro.commands!
           .map((command) => command.createInstruction(turtle, copy))
           .expand((x) => x));
       instructions.addAll(list);

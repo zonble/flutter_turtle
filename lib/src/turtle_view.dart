@@ -11,7 +11,7 @@ class TurtleView extends StatefulWidget {
   final List<TurtleCommand> commands;
 
   /// The child widget.
-  final Widget child;
+  final Widget? child;
 
   /// Size of the canvas.
   final Size size;
@@ -21,8 +21,8 @@ class TurtleView extends StatefulWidget {
 
   /// Creates a new instance.
   const TurtleView({
-    Key key,
-    @required this.commands,
+    Key? key,
+    required this.commands,
     this.child,
     this.isComplex = false,
     this.size = Size.zero,

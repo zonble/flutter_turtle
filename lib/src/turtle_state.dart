@@ -6,7 +6,7 @@ import 'package:flutter_turtle/flutter_turtle.dart';
 /// Represents macros.
 class Macro {
   /// Commands in a macro.
-  final List<TurtleCommand> commands;
+  final List<TurtleCommand>? commands;
 
   /// Creates a new instance.
   Macro({this.commands});

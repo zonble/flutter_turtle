@@ -25,7 +25,7 @@ class TurtlePainter extends CustomPainter {
 }
 
 class PaintContext {
-  Canvas canvas;
-  Paint paint;
-  Offset center;
+  late Canvas canvas;
+  late Paint paint;
+  late Offset center;
 }
