@@ -9,8 +9,8 @@ class Clock2Page extends StatefulWidget {
 }
 
 class _ClockPageState extends State<Clock2Page> {
-  DateTime _now;
-  Timer _timer;
+  DateTime? _now;
+  Timer? _timer;
 
   @override
   void initState() {
@@ -18,7 +18,7 @@ class _ClockPageState extends State<Clock2Page> {
     _now = DateTime.now();
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       final now = DateTime.now();
-      if (now.minute != _now.minute) {
+      if (now.minute != _now?.minute) {
         setState(() => _now = now);
       }
     });
@@ -26,14 +26,14 @@ class _ClockPageState extends State<Clock2Page> {
 
   @override
   void dispose() {
-    _timer.cancel();
+    _timer?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    var hour = (_now.hour % 12);
-    var min = _now.minute;
+    var hour = ((_now?.hour ?? 0) % 12);
+    var min = _now?.minute ?? 0;
 
     var commands = [
       SetStrokeWidth((_) => 2),

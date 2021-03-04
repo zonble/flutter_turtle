@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
 
 class Spiral2Page extends StatefulWidget {
-  Spiral2Page({Key key}) : super(key: key);
+  Spiral2Page({Key? key}) : super(key: key);
 
   @override
   _Spiral2PageState createState() => _Spiral2PageState();

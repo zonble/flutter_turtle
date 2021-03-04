@@ -9,7 +9,7 @@ class LogoControllerPage extends StatefulWidget {
 class _LogoControllerPageState extends State<LogoControllerPage>
     with SingleTickerProviderStateMixin {
   double _value = 0.0;
-  AnimationController _controller;
+  AnimationController? _controller;
 
   @override
   void initState() {
@@ -24,7 +24,7 @@ class _LogoControllerPageState extends State<LogoControllerPage>
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller?.dispose();
     super.dispose();
   }
 
@@ -62,12 +62,12 @@ class _LogoControllerPageState extends State<LogoControllerPage>
               onChanged: (value) {
                 setState(() {
                   _value = value;
-                  _controller.value = value;
+                  _controller?.value = value;
                 });
               },
             ),
             ControllableTurtleView(
-              controller: _controller,
+              controller: _controller!,
               child: Container(
                 width: double.infinity,
                 height: 400,

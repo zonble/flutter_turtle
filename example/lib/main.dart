@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -92,10 +92,10 @@ class MyTile extends StatelessWidget {
   final String image;
 
   const MyTile({
-    Key key,
-    this.title,
-    this.pageName,
-    this.image,
+    Key? key,
+    required this.title,
+    required this.pageName,
+    required this.image,
   }) : super(key: key);
 
   @override
