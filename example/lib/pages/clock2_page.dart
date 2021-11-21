@@ -71,19 +71,15 @@ class _ClockPageState extends State<Clock2Page> {
       ]),
     ];
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Clock'),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
-            onPressed: () => setState(() {
-              final now = DateTime.now();
-              _now = now;
-            }),
-            child: Text('Run'),
-          )
-        ],
-      ),
+      appBar: AppBar(title: Text('Clock'), actions: <Widget>[
+        TextButton(
+          onPressed: () => setState(() {
+            final now = DateTime.now();
+            _now = now;
+          }),
+          child: Text('Run', style: TextStyle(color: Colors.white)),
+        )
+      ]),
       body: AnimatedTurtleView(
         animationDuration: Duration(seconds: 1),
         child: Container(),

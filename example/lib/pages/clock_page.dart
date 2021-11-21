@@ -40,13 +40,12 @@ class _ClockPageState extends State<ClockPage> {
       appBar: AppBar(
         title: Text('Clock'),
         actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
+          TextButton(
             onPressed: () => setState(() {
               final now = DateTime.now();
               _now = now;
             }),
-            child: Text('Run'),
+            child: Text('Run', style: TextStyle(color: Colors.white)),
           )
         ],
       ),

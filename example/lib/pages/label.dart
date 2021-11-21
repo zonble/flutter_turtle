@@ -11,16 +11,12 @@ class _LabelPageState extends State<LabelPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Label'),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
-            onPressed: () => setState(() {}),
-            child: Text('Run'),
-          )
-        ],
-      ),
+      appBar: AppBar(title: Text('Label'), actions: <Widget>[
+        TextButton(
+          onPressed: () => setState(() {}),
+          child: Text('Run', style: TextStyle(color: Colors.white)),
+        )
+      ]),
       body: ClipRect(
         child: AnimatedTurtleView(
           animationDuration: Duration(seconds: 1),

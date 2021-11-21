@@ -38,16 +38,12 @@ class _FlowerPageState extends State<FlowerPage> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Flower'),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
-            onPressed: () => setState(() {}),
-            child: Text('Run'),
-          )
-        ],
-      ),
+      appBar: AppBar(title: Text('Flower'), actions: <Widget>[
+        TextButton(
+          onPressed: () => setState(() {}),
+          child: Text('Run', style: TextStyle(color: Colors.white)),
+        )
+      ]),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[

@@ -42,41 +42,39 @@ class _LogoControllerPageState extends State<LogoControllerPage>
     ];
 
     return Scaffold(
-      appBar: AppBar(title: Text('Logo')),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                'See https://en.wikipedia.org/wiki/Logo_(programming_language)',
-                maxLines: 10,
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Slider(
-              value: _value,
-              onChanged: (value) {
-                setState(() {
-                  _value = value;
-                  _controller?.value = value;
-                });
-              },
-            ),
-            ControllableTurtleView(
-              controller: _controller!,
-              child: Container(
-                width: double.infinity,
-                height: 400,
-              ),
-              commands: commands,
-            ),
-          ],
-        ),
-      ),
-    );
+        appBar: AppBar(title: Text('Logo')),
+        body: SingleChildScrollView(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    'See https://en.wikipedia.org/wiki/Logo_(programming_language)',
+                    maxLines: 10,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Slider(
+                  value: _value,
+                  onChanged: (value) {
+                    setState(() {
+                      _value = value;
+                      _controller?.value = value;
+                    });
+                  },
+                ),
+                ControllableTurtleView(
+                  controller: _controller!,
+                  child: Container(
+                    width: double.infinity,
+                    height: 400,
+                  ),
+                  commands: commands,
+                ),
+              ]),
+        ));
   }
 }

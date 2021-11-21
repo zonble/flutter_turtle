@@ -11,16 +11,12 @@ class _FernPageState extends State<FernPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Fern'),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
-            onPressed: () => setState(() {}),
-            child: Text('Run'),
-          )
-        ],
-      ),
+      appBar: AppBar(title: Text('Fern'), actions: <Widget>[
+        TextButton(
+          onPressed: () => setState(() {}),
+          child: Text('Run', style: TextStyle(color: Colors.white)),
+        )
+      ]),
       body: AnimatedTurtleView(
         child: Container(),
         commands: [

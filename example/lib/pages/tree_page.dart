@@ -50,16 +50,12 @@ class _TreePageState extends State<TreePage> {
     ];
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Tree'),
-          actions: <Widget>[
-            FlatButton(
-              textColor: Colors.white,
-              onPressed: () => setState(() {}),
-              child: Text('Run'),
-            )
-          ],
-        ),
+        appBar: AppBar(title: Text('Tree'), actions: <Widget>[
+          TextButton(
+            onPressed: () => setState(() {}),
+            child: Text('Run', style: TextStyle(color: Colors.white)),
+          )
+        ]),
         body: SingleChildScrollView(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,

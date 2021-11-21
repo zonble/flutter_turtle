@@ -21,16 +21,12 @@ class _LogoPageState extends State<LogoPage> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Logo'),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
-            onPressed: () => setState(() {}),
-            child: Text('Run'),
-          )
-        ],
-      ),
+      appBar: AppBar(title: Text('Logo'), actions: <Widget>[
+        TextButton(
+          onPressed: () => setState(() {}),
+          child: Text('Run', style: TextStyle(color: Colors.white)),
+        )
+      ]),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

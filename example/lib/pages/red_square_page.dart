@@ -21,16 +21,12 @@ class _RedSquarePageState extends State<RedSquarePage> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Red Suqares'),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
-            onPressed: () => setState(() {}),
-            child: Text('Run'),
-          )
-        ],
-      ),
+      appBar: AppBar(title: Text('Red Suqares'), actions: <Widget>[
+        TextButton(
+          onPressed: () => setState(() {}),
+          child: Text('Run', style: TextStyle(color: Colors.white)),
+        )
+      ]),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

@@ -14,10 +14,9 @@ class _StarPageState extends State<StarPage> {
       appBar: AppBar(
         title: Text('Star'),
         actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
+          TextButton(
             onPressed: () => setState(() {}),
-            child: Text('Run'),
+            child: Text('Run', style: TextStyle(color: Colors.white)),
           )
         ],
       ),

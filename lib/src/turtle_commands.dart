@@ -3,6 +3,7 @@ import 'turtle_state.dart';
 
 /// An abstract interface for all commands.
 abstract class TurtleCommand {
+  /// Creates instructions.
   List<Instruction> createInstruction(TurtleState turtle, Map argv);
 }
 
@@ -23,7 +24,9 @@ class TurtleCompiler {
       for (var command in commands) {
         instructions.addAll(command.createInstruction(turtle, argv));
       }
-    } catch (StopException) {}
+    } catch (error) {
+      // Ignore
+    }
     return instructions;
   }
 }
