@@ -18,7 +18,7 @@ class Repeat implements TurtleCommand {
   final List<TurtleCommand> commands;
 
   /// Creates a new instance.
-  Repeat(this.times, this.commands);
+  const Repeat(this.times, this.commands);
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {

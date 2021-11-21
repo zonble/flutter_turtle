@@ -18,7 +18,7 @@ class RunMacro implements TurtleCommand {
   final bool preserveState;
 
   /// Creates a new instance.
-  RunMacro(
+  const RunMacro(
     this.name,
     this.macroArgv, {
     this.preserveState = true,
@@ -37,7 +37,7 @@ class RunMacro implements TurtleCommand {
     final position = turtle.position;
 
     var instructions = <Instruction>[];
-    var copy = Map.of(argv)..addAll(this.macroArgv(argv));
+    var copy = Map.of(argv)..addAll(macroArgv(argv));
     try {
       var list = List<Instruction>.of(macro.commands!
           .map((command) => command.createInstruction(turtle, copy))

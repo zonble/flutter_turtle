@@ -14,7 +14,7 @@ class Label implements TurtleCommand {
   final String Function(Map) text;
 
   /// Creates a new instance.
-  Label(this.text);
+  const Label(this.text);
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) => [

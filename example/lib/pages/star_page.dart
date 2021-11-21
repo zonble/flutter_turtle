@@ -3,6 +3,8 @@ import 'package:flutter_turtle/flutter_turtle.dart';
 
 /// An example from https://www.calormen.com/jslogo/
 class StarPage extends StatefulWidget {
+  const StarPage({Key? key}) : super(key: key);
+
   @override
   _StarPageState createState() => _StarPageState();
 }
@@ -12,16 +14,16 @@ class _StarPageState extends State<StarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Star'),
+        title: const Text('Star'),
         actions: <Widget>[
           TextButton(
             onPressed: () => setState(() {}),
-            child: Text('Run', style: TextStyle(color: Colors.white)),
+            child: const Text('Run', style: TextStyle(color: Colors.white)),
           )
         ],
       ),
       body: AnimatedTurtleView(
-        animationDuration: Duration(seconds: 1),
+        animationDuration: const Duration(seconds: 1),
         child: Container(),
         commands: [
           PenDown(),

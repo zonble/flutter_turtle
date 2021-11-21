@@ -15,7 +15,7 @@ class GoTo implements TurtleCommand {
   final Offset Function(Map) position;
 
   /// Creates a new instance.
-  GoTo(this.position);
+  const GoTo(this.position);
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {

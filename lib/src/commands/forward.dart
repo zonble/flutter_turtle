@@ -18,7 +18,7 @@ class Forward implements TurtleCommand {
   final double Function(Map) distance;
 
   /// Creates a new instance.
-  Forward(this.distance);
+  const Forward(this.distance);
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {

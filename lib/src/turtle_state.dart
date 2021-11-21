@@ -24,7 +24,7 @@ class TurtleState {
   /// The position of the turtle.
   ///
   /// The turtle is in the center of a canvas by default.
-  Offset position = Offset(0.0, 0.0);
+  Offset position = const Offset(0.0, 0.0);
 
   /// The angle of the turtle.
   ///
