@@ -10,7 +10,7 @@ import '../turtle_state.dart';
 class ResetPosition implements TurtleCommand {
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
-    turtle.position = Offset(0.0, 0.0);
+    turtle.position = const Offset(0.0, 0.0);
     return [];
   }
 }

@@ -13,7 +13,7 @@ class If implements TurtleCommand {
   final List<TurtleCommand> commands;
 
   /// Creates a new instance.
-  If(this.condition, this.commands);
+  const If(this.condition, this.commands);
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {

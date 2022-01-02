@@ -13,7 +13,7 @@ class SetColor implements TurtleCommand {
   final Color Function(Map) color;
 
   /// Creates a new instance.
-  SetColor(this.color);
+  const SetColor(this.color);
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {

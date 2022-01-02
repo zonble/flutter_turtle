@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
 
 class RedSquarePage extends StatefulWidget {
+  const RedSquarePage({Key? key}) : super(key: key);
+
   @override
   _RedSquarePageState createState() => _RedSquarePageState();
 }
@@ -9,7 +11,7 @@ class RedSquarePage extends StatefulWidget {
 class _RedSquarePageState extends State<RedSquarePage> {
   @override
   Widget build(BuildContext context) {
-    var commands = [
+    final commands = [
       PenDown(),
       SetStrokeWidth((_) => 1),
       SetColor((_) => Colors.red),
@@ -21,27 +23,23 @@ class _RedSquarePageState extends State<RedSquarePage> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Red Suqares'),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
-            onPressed: () => setState(() {}),
-            child: Text('Run'),
-          )
-        ],
-      ),
+      appBar: AppBar(title: const Text('Red Suqares'), actions: <Widget>[
+        TextButton(
+          onPressed: () => setState(() {}),
+          child: const Text('Run', style: TextStyle(color: Colors.white)),
+        )
+      ]),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(height: 20.0),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+            const SizedBox(height: 20.0),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
               child: Text(
                   'http://www.logointerpreter.com/view-program.php?user=Josefminecraft&program=77%20red%20sqares'),
             ),
             AnimatedTurtleView(
-                child: Container(width: double.infinity, height: 400.0),
+                child: const SizedBox(width: double.infinity, height: 400.0),
                 commands: commands),
           ],
         ),

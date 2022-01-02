@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
 
 class LogoPage extends StatefulWidget {
+  const LogoPage({Key? key}) : super(key: key);
+
   @override
   _LogoPageState createState() => _LogoPageState();
 }
@@ -9,9 +11,9 @@ class LogoPage extends StatefulWidget {
 class _LogoPageState extends State<LogoPage> {
   @override
   Widget build(BuildContext context) {
-    var commands = [
+    final commands = [
       PenDown(),
-      SetColor((_) => Color(0xffff9933)),
+      SetColor((_) => const Color(0xffff9933)),
       SetStrokeWidth((_) => 2),
       Repeat((_) => 20, [
         Repeat((_) => 180, [Forward((_) => 25.0), Right((_) => 20)]),
@@ -21,24 +23,20 @@ class _LogoPageState extends State<LogoPage> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Logo'),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
-            onPressed: () => setState(() {}),
-            child: Text('Run'),
-          )
-        ],
-      ),
+      appBar: AppBar(title: const Text('Logo'), actions: <Widget>[
+        TextButton(
+          onPressed: () => setState(() {}),
+          child: const Text('Run', style: TextStyle(color: Colors.white)),
+        )
+      ]),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+            const SizedBox(height: 20),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
               child: Text(
                 'See https://en.wikipedia.org/wiki/Logo_(programming_language)',
                 maxLines: 10,
@@ -46,8 +44,8 @@ class _LogoPageState extends State<LogoPage> {
               ),
             ),
             AnimatedTurtleView(
-              animationDuration: Duration(seconds: 3),
-              child: Container(
+              animationDuration: const Duration(seconds: 3),
+              child: const SizedBox(
                 width: double.infinity,
                 height: 400,
               ),

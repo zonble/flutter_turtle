@@ -8,11 +8,11 @@ import '../turtle_state.dart';
 class Log implements TurtleCommand {
   final String text;
 
-  Log(this.text);
+  const Log(this.text);
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
-    print(this.text);
+    // print(this.text);
     return [];
   }
 }

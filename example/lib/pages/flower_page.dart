@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
 
 class FlowerPage extends StatefulWidget {
+  const FlowerPage({Key? key}) : super(key: key);
+
   @override
   _FlowerPageState createState() => _FlowerPageState();
 }
@@ -24,7 +26,7 @@ class _FlowerPageState extends State<FlowerPage> {
       return colors[Random().nextInt(colors.length)];
     }
 
-    var commands = [
+    final commands = [
       PenDown(),
       Repeat((_) => 8, [
         SetColor((_) => randomColor()),
@@ -38,27 +40,23 @@ class _FlowerPageState extends State<FlowerPage> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Flower'),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
-            onPressed: () => setState(() {}),
-            child: Text('Run'),
-          )
-        ],
-      ),
+      appBar: AppBar(title: const Text('Flower'), actions: <Widget>[
+        TextButton(
+          onPressed: () => setState(() {}),
+          child: const Text('Run', style: TextStyle(color: Colors.white)),
+        )
+      ]),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          SizedBox(height: 20.0),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
+          const SizedBox(height: 20.0),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
             child: Text(
                 'http://www.logointerpreter.com/view-program.php?user=Jannacutie&program=color%20flower'),
           ),
           AnimatedTurtleView(
-            child: Container(
+            child: const SizedBox(
               width: double.infinity,
               height: 400,
             ),

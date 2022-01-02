@@ -16,7 +16,7 @@ class IfElse implements TurtleCommand {
   final List<TurtleCommand> falsePath;
 
   /// Creates a new instance.
-  IfElse(this.condition, this.truePath, this.falsePath);
+  const IfElse(this.condition, this.truePath, this.falsePath);
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
