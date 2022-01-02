@@ -23,7 +23,9 @@ class TurtleCompiler {
       for (var command in commands) {
         instructions.addAll(command.createInstruction(turtle, argv));
       }
-    } catch (StopException) {}
+    } catch (e) {
+      // print(e)
+    }
     return instructions;
   }
 }

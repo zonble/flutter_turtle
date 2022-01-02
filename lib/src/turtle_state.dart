@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_turtle/flutter_turtle.dart';
+import '../flutter_turtle.dart';
 
 /// Represents macros.
 class Macro {

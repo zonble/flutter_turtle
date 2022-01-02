@@ -4,7 +4,7 @@ import 'painter.dart';
 import 'turtle_commands.dart';
 
 /// A widget takes [commands] and draw Turtle Graphics in a canvas accordingly.
-/// 
+///
 /// The widget does not have any animation effects.
 class TurtleView extends StatefulWidget {
   /// The commands.
@@ -33,6 +33,12 @@ class TurtleView extends StatefulWidget {
 }
 
 class _TurtleViewState extends State<TurtleView> {
+  @override
+  void didUpdateWidget(covariant TurtleView oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     List<Instruction> instructions = TurtleCompiler.compile(widget.commands);
