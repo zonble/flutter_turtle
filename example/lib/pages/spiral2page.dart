@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
 
 class Spiral2Page extends StatefulWidget {
-  Spiral2Page({Key key}) : super(key: key);
-
   @override
   _Spiral2PageState createState() => _Spiral2PageState();
 }
@@ -29,16 +27,12 @@ class _Spiral2PageState extends State<Spiral2Page> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Spiral'),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
-            onPressed: () => setState(() {}),
-            child: Text('Run'),
-          )
-        ],
-      ),
+      appBar: AppBar(title: Text('Spiral'), actions: <Widget>[
+        TextButton(
+          onPressed: () => setState(() {}),
+          child: Text('Run', style: TextStyle(color: Colors.white)),
+        )
+      ]),
       body: ClipRect(
         child: AnimatedTurtleView(
             animationDuration: Duration(seconds: 3),

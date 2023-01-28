@@ -9,8 +9,8 @@ class ClockPage extends StatefulWidget {
 }
 
 class _ClockPageState extends State<ClockPage> {
-  DateTime _now;
-  Timer _timer;
+  DateTime? _now;
+  Timer? _timer;
 
   @override
   void initState() {
@@ -18,7 +18,7 @@ class _ClockPageState extends State<ClockPage> {
     _now = DateTime.now();
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       final now = DateTime.now();
-      if (now.minute != _now.minute) {
+      if (now.minute != _now?.minute) {
         setState(() => _now = now);
       }
     });
@@ -26,27 +26,26 @@ class _ClockPageState extends State<ClockPage> {
 
   @override
   void dispose() {
-    _timer.cancel();
+    _timer?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    var hour = (_now.hour % 12).toDouble();
-    var min = _now.minute.toDouble();
+    var hour = (_now?.hour ?? 0 % 12).toDouble();
+    var min = _now?.minute.toDouble() ?? 0;
     hour += min / 60;
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Clock'),
         actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
+          TextButton(
             onPressed: () => setState(() {
               final now = DateTime.now();
               _now = now;
             }),
-            child: Text('Run'),
+            child: Text('Run', style: TextStyle(color: Colors.white)),
           )
         ],
       ),

@@ -11,33 +11,27 @@ class _LabelPageState extends State<LabelPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Label'),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
+        appBar: AppBar(title: Text('Label'), actions: <Widget>[
+          TextButton(
             onPressed: () => setState(() {}),
-            child: Text('Run'),
+            child: Text('Run', style: TextStyle(color: Colors.white)),
           )
-        ],
-      ),
-      body: ClipRect(
-        child: AnimatedTurtleView(
-          animationDuration: Duration(seconds: 1),
-          child: Container(),
-          commands: [
-            Repeat((_) => 144, [
-              SetLabelHeight((_) => _['repcount'].toDouble()),
-              PenUp(),
-              Forward((_) => (_['repcount'] * _['repcount']).toDouble() / 30.0),
-              Label((_) => 'Turtle'),
-              Back((_) => (_['repcount'] * _['repcount']).toDouble() / 30.0),
-              PenDown(),
-              Right((_) => 10),
-            ]),
-          ],
-        ),
-      ),
-    );
+        ]),
+        body: ClipRect(
+            child: AnimatedTurtleView(
+                animationDuration: Duration(seconds: 1),
+                child: Container(),
+                commands: [
+              Repeat((_) => 144, [
+                SetLabelHeight((_) => _['repcount'].toDouble()),
+                PenUp(),
+                Forward(
+                    (_) => (_['repcount'] * _['repcount']).toDouble() / 30.0),
+                Label((_) => 'Turtle'),
+                Back((_) => (_['repcount'] * _['repcount']).toDouble() / 30.0),
+                PenDown(),
+                Right((_) => 10),
+              ]),
+            ])));
   }
 }

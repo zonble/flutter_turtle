@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
 
@@ -9,7 +7,7 @@ class Macro {
   final List<TurtleCommand> commands;
 
   /// Creates a new instance.
-  Macro({this.commands});
+  Macro({required this.commands});
 }
 
 /// Represents the state of a turtle.

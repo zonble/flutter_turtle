@@ -43,16 +43,12 @@ class _SnowflakePageState extends State<SnowflakePage> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Snowflake'),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
-            onPressed: () => setState(() {}),
-            child: Text('Run'),
-          )
-        ],
-      ),
+      appBar: AppBar(title: Text('Snowflake'), actions: <Widget>[
+        TextButton(
+          onPressed: () => setState(() {}),
+          child: Text('Run', style: TextStyle(color: Colors.white)),
+        )
+      ]),
       body: AnimatedTurtleView(
           child: Container(width: double.infinity, height: 300),
           commands: commands),

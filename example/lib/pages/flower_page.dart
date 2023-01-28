@@ -38,34 +38,28 @@ class _FlowerPageState extends State<FlowerPage> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Flower'),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
+        appBar: AppBar(title: Text('Flower'), actions: <Widget>[
+          TextButton(
             onPressed: () => setState(() {}),
-            child: Text('Run'),
+            child: Text('Run', style: TextStyle(color: Colors.white)),
           )
-        ],
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          SizedBox(height: 20.0),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-                'http://www.logointerpreter.com/view-program.php?user=Jannacutie&program=color%20flower'),
-          ),
-          AnimatedTurtleView(
-            child: Container(
-              width: double.infinity,
-              height: 400,
-            ),
-            commands: commands,
-          ),
-        ],
-      ),
-    );
+        ]),
+        body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(height: 20.0),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                    'http://www.logointerpreter.com/view-program.php?user=Jannacutie&program=color%20flower'),
+              ),
+              AnimatedTurtleView(
+                child: Container(
+                  width: double.infinity,
+                  height: 400,
+                ),
+                commands: commands,
+              ),
+            ]));
   }
 }

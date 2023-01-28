@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/clock2_page.dart';
@@ -44,7 +43,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({super.key, required this.title});
 
   final String title;
 
@@ -92,11 +91,11 @@ class MyTile extends StatelessWidget {
   final String image;
 
   const MyTile({
-    Key key,
-    this.title,
-    this.pageName,
-    this.image,
-  }) : super(key: key);
+    super.key,
+    required this.title,
+    required this.pageName,
+    required this.image,
+  });
 
   @override
   Widget build(BuildContext context) => Card(

@@ -18,8 +18,6 @@ class Label implements TurtleCommand {
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
-    if (text == null) return [];
-
     return [
       DrawTextInstruction(
         text: text(Map.of(argv)),

@@ -11,19 +11,13 @@ class _FernPageState extends State<FernPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Fern'),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
+        appBar: AppBar(title: Text('Fern'), actions: <Widget>[
+          TextButton(
             onPressed: () => setState(() {}),
-            child: Text('Run'),
+            child: Text('Run', style: TextStyle(color: Colors.white)),
           )
-        ],
-      ),
-      body: AnimatedTurtleView(
-        child: Container(),
-        commands: [
+        ]),
+        body: AnimatedTurtleView(child: Container(), commands: [
           SetMacro('fern', [
             IfElse((_) => _['size'] < 1.0, [
               Stop()
@@ -49,8 +43,6 @@ class _FernPageState extends State<FernPage> {
           PenDown(),
           RunMacro('fern', (_) => {'size': 25.0, 'sign': 1.0}),
           PenUp(),
-        ],
-      ),
-    );
+        ]));
   }
 }

@@ -22,7 +22,7 @@ class Repeat implements TurtleCommand {
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
-    if (times == null || commands == null || commands.isEmpty) return [];
+    if (commands.isEmpty) return [];
 
     var instructions = <Instruction>[];
     for (var i = 0; i < times(Map.from(argv)); i++) {

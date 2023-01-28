@@ -12,7 +12,7 @@ class AnimatedTurtleView extends StatefulWidget {
   final List<TurtleCommand> commands;
 
   /// The child widget.
-  final Widget child;
+  final Widget? child;
 
   /// Size of the canvas.
   final Size size;
@@ -25,13 +25,13 @@ class AnimatedTurtleView extends StatefulWidget {
 
   /// Creates a new instance.
   const AnimatedTurtleView({
-    Key key,
-    @required this.commands,
+    super.key,
+    required this.commands,
     this.child,
     this.isComplex = false,
     this.size = Size.zero,
     this.animationDuration = const Duration(seconds: 3),
-  }) : super(key: key);
+  });
 
   @override
   _AnimatedTurtleViewState createState() => _AnimatedTurtleViewState();
@@ -40,7 +40,7 @@ class AnimatedTurtleView extends StatefulWidget {
 class _AnimatedTurtleViewState extends State<AnimatedTurtleView>
     with SingleTickerProviderStateMixin {
   List<Instruction> _instructions = [];
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {

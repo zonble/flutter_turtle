@@ -1,5 +1,4 @@
 import 'dart:math' as math;
-import 'dart:ui';
 
 import 'package:flutter/widgets.dart';
 
@@ -28,11 +27,11 @@ class DrawTextInstruction implements Instruction {
   final Color color;
 
   DrawTextInstruction({
-    this.text,
-    this.position,
-    this.labelHeight,
-    this.degrees,
-    this.color,
+    required this.text,
+    required this.position,
+    required this.labelHeight,
+    required this.degrees,
+    required this.color,
   });
 
   @override

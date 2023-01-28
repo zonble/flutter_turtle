@@ -1,3 +1,4 @@
+import 'commands/_exceptions.dart';
 import 'painter.dart';
 import 'turtle_state.dart';
 
@@ -23,7 +24,7 @@ class TurtleCompiler {
       for (var command in commands) {
         instructions.addAll(command.createInstruction(turtle, argv));
       }
-    } catch (StopException) {}
+    } on StopException catch (_) {}
     return instructions;
   }
 }

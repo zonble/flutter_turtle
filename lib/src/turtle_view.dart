@@ -4,14 +4,14 @@ import 'painter.dart';
 import 'turtle_commands.dart';
 
 /// A widget takes [commands] and draw Turtle Graphics in a canvas accordingly.
-/// 
+///
 /// The widget does not have any animation effects.
 class TurtleView extends StatefulWidget {
   /// The commands.
   final List<TurtleCommand> commands;
 
   /// The child widget.
-  final Widget child;
+  final Widget? child;
 
   /// Size of the canvas.
   final Size size;
@@ -21,12 +21,12 @@ class TurtleView extends StatefulWidget {
 
   /// Creates a new instance.
   const TurtleView({
-    Key key,
-    @required this.commands,
+    super.key,
+    required this.commands,
     this.child,
     this.isComplex = false,
     this.size = Size.zero,
-  }) : super(key: key);
+  });
 
   @override
   _TurtleViewState createState() => _TurtleViewState();

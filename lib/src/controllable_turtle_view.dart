@@ -10,7 +10,7 @@ class ControllableTurtleView extends StatefulWidget {
   final List<TurtleCommand> commands;
 
   /// The child widget.
-  final Widget child;
+  final Widget? child;
 
   /// Size of the canvas.
   final Size size;
@@ -23,13 +23,13 @@ class ControllableTurtleView extends StatefulWidget {
 
   /// Creates a new instance.
   const ControllableTurtleView({
-    Key key,
-    @required this.commands,
-    @required this.controller,
+    super.key,
+    required this.commands,
+    required this.controller,
     this.child,
     this.isComplex = false,
     this.size = Size.zero,
-  }) : super(key: key);
+  });
 
   @override
   _ControllableTurtleViewState createState() => _ControllableTurtleViewState();

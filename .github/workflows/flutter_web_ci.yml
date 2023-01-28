@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,8 +19,8 @@ jobs:
           java-version: "12.x"
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: "1.12.x" # you can use 1.12
-          channel: "beta" # Currently you have to use beta channel for Flutter web.
+          flutter-version: "3.7.x" # you can use 1.12
+          channel: "stable" # Currently you have to use beta channel for Flutter web.
       - name: Upgrades Flutter
         run: flutter upgrade
         working-directory: ./example
@@ -30,14 +33,7 @@ jobs:
       - name: Build Web
         run: flutter build web
         working-directory: ./example
-      - name: Deploy
-        run: |
-          cd example/build/web
-          git init
-          git config user.name  "CI"
-          git config user.email "flutter-ci@github.com"
-          git remote add secure-origin https://${{ secrets.ACCESS_TOKEN }}@github.com/zonble/flutter_turtle.git
-          git checkout -b gh-pages
-          git add .
-          git commit -m "Updated docs"
-          git push --force secure-origin gh-pages
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: example/build/web

@@ -21,31 +21,23 @@ class _RedSquarePageState extends State<RedSquarePage> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Red Suqares'),
-        actions: <Widget>[
-          FlatButton(
-            textColor: Colors.white,
+        appBar: AppBar(title: Text('Red Squares'), actions: <Widget>[
+          TextButton(
             onPressed: () => setState(() {}),
-            child: Text('Run'),
+            child: Text('Run', style: TextStyle(color: Colors.white))
           )
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 20.0),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                  'http://www.logointerpreter.com/view-program.php?user=Josefminecraft&program=77%20red%20sqares'),
-            ),
-            AnimatedTurtleView(
-                child: Container(width: double.infinity, height: 400.0),
-                commands: commands),
-          ],
-        ),
-      ),
-    );
+        ]),
+        body: SingleChildScrollView(
+            child: Column(children: <Widget>[
+          SizedBox(height: 20.0),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+                'http://www.logointerpreter.com/view-program.php?user=Josefminecraft&program=77%20red%20sqares'),
+          ),
+          AnimatedTurtleView(
+              child: Container(width: double.infinity, height: 400.0),
+              commands: commands),
+        ])));
   }
 }
