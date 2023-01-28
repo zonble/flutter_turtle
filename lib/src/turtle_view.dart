@@ -29,10 +29,16 @@ class TurtleView extends StatefulWidget {
   });
 
   @override
-  _TurtleViewState createState() => _TurtleViewState();
+  State<TurtleView> createState() => _TurtleViewState();
 }
 
 class _TurtleViewState extends State<TurtleView> {
+  @override
+  void didUpdateWidget(covariant TurtleView oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     List<Instruction> instructions = TurtleCompiler.compile(widget.commands);

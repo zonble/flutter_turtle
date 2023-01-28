@@ -47,7 +47,7 @@ class DrawTextInstruction implements Instruction {
         style: TextStyle(color: color, fontSize: labelHeight), text: text);
     final tp = TextPainter(text: span, textDirection: TextDirection.ltr);
     tp.layout();
-    tp.paint(context.canvas, new Offset(0.0, 0.0));
+    tp.paint(context.canvas, const Offset(0.0, 0.0));
     context.canvas.restore();
   }
 }

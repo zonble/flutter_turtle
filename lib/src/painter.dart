@@ -18,7 +18,9 @@ class TurtlePainter extends CustomPainter {
         ..strokeWidth = turtle.strokeWidth),
       center: Offset(size.width / 2, size.height / 2),
     );
-    instructions.forEach((command) => command.exec(context));
+    for (var command in instructions) {
+      command.exec(context);
+    }
   }
 
   @override

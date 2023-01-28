@@ -3,21 +3,23 @@ import 'package:flutter_turtle/flutter_turtle.dart';
 
 /// An example from https://www.calormen.com/jslogo/
 class FernPage extends StatefulWidget {
+  const FernPage({super.key});
+
   @override
-  _FernPageState createState() => _FernPageState();
+  State<FernPage> createState() => _FernPageState();
 }
 
 class _FernPageState extends State<FernPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Fern'), actions: <Widget>[
+        appBar: AppBar(title: const Text('Fern'), actions: <Widget>[
           TextButton(
             onPressed: () => setState(() {}),
-            child: Text('Run', style: TextStyle(color: Colors.white)),
+            child: const Text('Run', style: TextStyle(color: Colors.white)),
           )
         ]),
-        body: AnimatedTurtleView(child: Container(), commands: [
+        body: AnimatedTurtleView(commands: [
           SetMacro('fern', [
             IfElse((_) => _['size'] < 1.0, [
               Stop()
@@ -43,6 +45,6 @@ class _FernPageState extends State<FernPage> {
           PenDown(),
           RunMacro('fern', (_) => {'size': 25.0, 'sign': 1.0}),
           PenUp(),
-        ]));
+        ], child: Container()));
   }
 }

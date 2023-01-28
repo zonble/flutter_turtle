@@ -34,7 +34,7 @@ class AnimatedTurtleView extends StatefulWidget {
   });
 
   @override
-  _AnimatedTurtleViewState createState() => _AnimatedTurtleViewState();
+  State<AnimatedTurtleView> createState() => _AnimatedTurtleViewState();
 }
 
 class _AnimatedTurtleViewState extends State<AnimatedTurtleView>
@@ -66,14 +66,12 @@ class _AnimatedTurtleViewState extends State<AnimatedTurtleView>
 
   @override
   Widget build(BuildContext context) {
-    _controller.value = 0;
-    _controller.forward();
+    _controller.forward(from: 0);
     return AnimatedBuilder(
-        child: widget.child,
         animation: _controller,
         builder: (context, child) {
-          var value = _controller.value;
-          var instructions =
+          final value = _controller.value;
+          final instructions =
               _instructions.sublist(0, (_instructions.length * value).toInt());
           return CustomPaint(
             painter: TurtlePainter(instructions),
@@ -81,6 +79,7 @@ class _AnimatedTurtleViewState extends State<AnimatedTurtleView>
             isComplex: widget.isComplex,
             child: child,
           );
-        });
+        },
+        child: widget.child);
   }
 }

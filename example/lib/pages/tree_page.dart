@@ -3,14 +3,16 @@ import 'package:flutter_turtle/flutter_turtle.dart';
 
 /// An example from https://www.calormen.com/jslogo/
 class TreePage extends StatefulWidget {
+  const TreePage({Key? key}) : super(key: key);
+
   @override
-  _TreePageState createState() => _TreePageState();
+  State<TreePage> createState() => _TreePageState();
 }
 
 class _TreePageState extends State<TreePage> {
   @override
   Widget build(BuildContext context) {
-    var commands = [
+    final commands = [
       SetMacro('tree', [
         IfElse((_) => _['size'] < 5.0, [
           Forward((_) => _['size']),
@@ -50,24 +52,24 @@ class _TreePageState extends State<TreePage> {
     ];
 
     return Scaffold(
-        appBar: AppBar(title: Text('Tree'), actions: <Widget>[
+        appBar: AppBar(title: const Text('Tree'), actions: <Widget>[
           TextButton(
             onPressed: () => setState(() {}),
-            child: Text('Run', style: TextStyle(color: Colors.white)),
+            child: const Text('Run', style: TextStyle(color: Colors.white)),
           )
         ]),
         body: SingleChildScrollView(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.all(16.0),
                 child: Text('An example from https://www.calormen.com/jslogo/'),
               ),
               AnimatedTurtleView(
-                child: Container(width: double.infinity, height: 600),
                 commands: commands,
+                child: const SizedBox(width: double.infinity, height: 600),
               )
             ])));
   }

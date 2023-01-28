@@ -14,7 +14,7 @@ class Left implements TurtleCommand {
   final double Function(Map) degrees;
 
   /// Creates a new instance.
-  Left(this.degrees);
+  const Left(this.degrees);
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {

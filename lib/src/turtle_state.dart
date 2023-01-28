@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_turtle/flutter_turtle.dart';
+import '../flutter_turtle.dart';
 
 /// Represents macros.
 class Macro {
   /// Commands in a macro.
-  final List<TurtleCommand> commands;
+  final List<TurtleCommand>? commands;
 
   /// Creates a new instance.
   Macro({required this.commands});
@@ -22,7 +22,7 @@ class TurtleState {
   /// The position of the turtle.
   ///
   /// The turtle is in the center of a canvas by default.
-  Offset position = Offset(0.0, 0.0);
+  Offset position = const Offset(0.0, 0.0);
 
   /// The angle of the turtle.
   ///

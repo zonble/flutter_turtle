@@ -15,13 +15,12 @@ class GoTo implements TurtleCommand {
   final Offset Function(Map) position;
 
   /// Creates a new instance.
-  GoTo(this.position);
+  const GoTo(this.position);
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {
     final currentPosition = turtle.position;
     turtle.position = position(Map.of(argv));
-
     return turtle.isPenDown
         ? [DrawLineInstruction(currentPosition, turtle.position)]
         : [];

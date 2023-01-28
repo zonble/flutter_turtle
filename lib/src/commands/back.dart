@@ -13,7 +13,7 @@ class Back implements TurtleCommand {
   final double Function(Map) distance;
 
   /// Creates a new instance.
-  Back(this.distance);
+  const Back(this.distance);
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {

@@ -12,7 +12,7 @@ class SetLabelHeight implements TurtleCommand {
   final double Function(Map) height;
 
   /// Creates a new instance.
-  SetLabelHeight(this.height);
+  const SetLabelHeight(this.height);
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {

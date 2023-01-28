@@ -11,7 +11,7 @@ class SetStrokeWidth implements TurtleCommand {
   final double Function(Map) width;
 
   /// Creates a new instance.
-  SetStrokeWidth(this.width);
+  const SetStrokeWidth(this.width);
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {

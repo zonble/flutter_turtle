@@ -32,7 +32,7 @@ class ControllableTurtleView extends StatefulWidget {
   });
 
   @override
-  _ControllableTurtleViewState createState() => _ControllableTurtleViewState();
+  State<ControllableTurtleView> createState() => _ControllableTurtleViewState();
 }
 
 class _ControllableTurtleViewState extends State<ControllableTurtleView> {
@@ -54,7 +54,6 @@ class _ControllableTurtleViewState extends State<ControllableTurtleView> {
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-      child: widget.child,
       animation: widget.controller,
       builder: (context, child) {
         double value = widget.controller.value;
@@ -68,5 +67,6 @@ class _ControllableTurtleViewState extends State<ControllableTurtleView> {
           isComplex: widget.isComplex,
           child: child,
         );
-      });
+      },
+      child: widget.child);
 }

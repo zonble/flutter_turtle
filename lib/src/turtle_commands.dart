@@ -4,6 +4,7 @@ import 'turtle_state.dart';
 
 /// An abstract interface for all commands.
 abstract class TurtleCommand {
+  /// Creates instructions.
   List<Instruction> createInstruction(TurtleState turtle, Map argv);
 }
 

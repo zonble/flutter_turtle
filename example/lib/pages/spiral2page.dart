@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
 
 class Spiral2Page extends StatefulWidget {
+  const Spiral2Page({super.key});
+
   @override
-  _Spiral2PageState createState() => _Spiral2PageState();
+  State<Spiral2Page> createState() => _Spiral2PageState();
 }
 
 class _Spiral2PageState extends State<Spiral2Page> {
   @override
   Widget build(BuildContext context) {
-    var commands = [
+    final commands = [
       SetMacro('rect', [
         Forward((_) => _['l']),
         Left((_) => 90.0),
@@ -27,17 +29,17 @@ class _Spiral2PageState extends State<Spiral2Page> {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: Text('Spiral'), actions: <Widget>[
+      appBar: AppBar(title: const Text('Spiral'), actions: <Widget>[
         TextButton(
           onPressed: () => setState(() {}),
-          child: Text('Run', style: TextStyle(color: Colors.white)),
+          child: const Text('Run', style: TextStyle(color: Colors.white)),
         )
       ]),
       body: ClipRect(
         child: AnimatedTurtleView(
-            animationDuration: Duration(seconds: 3),
-            child: Container(),
-            commands: commands),
+            animationDuration: const Duration(seconds: 3),
+            commands: commands,
+            child: Container()),
       ),
     );
   }

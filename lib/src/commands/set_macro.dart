@@ -19,7 +19,7 @@ class SetMacro implements TurtleCommand {
   final List<TurtleCommand> commands;
 
   /// Creates a new instance.
-  SetMacro(this.name, this.commands);
+  const SetMacro(this.name, this.commands);
 
   @override
   List<Instruction> createInstruction(TurtleState turtle, Map argv) {

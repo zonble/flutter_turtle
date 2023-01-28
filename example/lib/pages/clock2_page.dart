@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_turtle/flutter_turtle.dart';
 
 class Clock2Page extends StatefulWidget {
+  const Clock2Page({super.key});
+
   @override
-  _ClockPageState createState() => _ClockPageState();
+  State<Clock2Page> createState() => _ClockPageState();
 }
 
 class _ClockPageState extends State<Clock2Page> {
@@ -16,7 +18,7 @@ class _ClockPageState extends State<Clock2Page> {
   void initState() {
     super.initState();
     _now = DateTime.now();
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       final now = DateTime.now();
       if (now.minute != _now?.minute) {
         setState(() => _now = now);
@@ -35,7 +37,7 @@ class _ClockPageState extends State<Clock2Page> {
     var hour = (_now?.hour ?? 0 % 12);
     var min = _now?.minute ?? 0;
 
-    var commands = [
+    final commands = [
       SetStrokeWidth((_) => 2),
       Repeat((_) => min + 1, [
         PenDown(),
@@ -71,22 +73,19 @@ class _ClockPageState extends State<Clock2Page> {
       ]),
     ];
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Clock'),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () => setState(() {
-              final now = DateTime.now();
-              _now = now;
-            }),
-            child: Text('Run', style: TextStyle(color: Colors.white)),
-          )
-        ],
-      ),
+      appBar: AppBar(title: const Text('Clock'), actions: <Widget>[
+        TextButton(
+          onPressed: () => setState(() {
+            final now = DateTime.now();
+            _now = now;
+          }),
+          child: const Text('Run', style: TextStyle(color: Colors.white)),
+        )
+      ]),
       body: AnimatedTurtleView(
-        animationDuration: Duration(seconds: 1),
-        child: Container(),
+        animationDuration: const Duration(seconds: 1),
         commands: commands,
+        child: Container(),
       ),
     );
   }
