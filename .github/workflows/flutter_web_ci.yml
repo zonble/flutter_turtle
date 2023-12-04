@@ -19,7 +19,7 @@ jobs:
           java-version: "12.x"
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: "3.10.x" # you can use 1.12
+          flutter-version: "3.16.x" # you can use 1.12
           channel: "stable" # Currently you have to use beta channel for Flutter web.
       - name: Upgrades Flutter
         run: flutter upgrade
