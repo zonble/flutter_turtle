@@ -12,7 +12,7 @@ jobs:
           java-version: "12.x"
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: "3.10.x" # you can use 1.7
+          flutter-version: "3.16.x" # you can use 1.7
           channel: "stable" # optional, default to: 'stable'
       - run: flutter pub get
         working-directory: ./example
