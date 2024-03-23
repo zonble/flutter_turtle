@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import '../flutter_turtle.dart';
 
@@ -40,4 +42,10 @@ class TurtleState {
 
   /// Height of labels.
   double labelHeight = 12;
+
+  ///
+  /// A queue that keeps track of the turtle's movements in a record
+  /// (Offset, double).
+  ///
+  Queue turtleStack = Queue<(Offset position, double orientation)>();
 }

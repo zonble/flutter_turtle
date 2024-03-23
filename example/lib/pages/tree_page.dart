@@ -3,7 +3,7 @@ import 'package:flutter_turtle/flutter_turtle.dart';
 
 /// An example from https://www.calormen.com/jslogo/
 class TreePage extends StatefulWidget {
-  const TreePage({Key? key}) : super(key: key);
+  const TreePage({super.key});
 
   @override
   State<TreePage> createState() => _TreePageState();
