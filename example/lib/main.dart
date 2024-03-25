@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_turtle_example/pages/lsystem_page.dart';
 
 import 'pages/clock2_page.dart';
 import 'pages/clock_page.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         'spiral': (_) => const SpiralPage(),
         'spiral2': (_) => const Spiral2Page(),
         'snowflake': (_) => const SnowflakePage(),
+        'lsystem_plant': (_) => const LSystemPage(),
       },
     );
   }
@@ -76,6 +78,11 @@ class _MyHomePageState extends State<MyHomePage> {
           title: 'Spiral', image: 'images/11.png', pageName: 'spiral2'),
       const MyTile(
           title: 'Snowflake', image: 'images/12.png', pageName: 'snowflake'),
+      const MyTile(
+        title: 'L-System Plant',
+        pageName: 'lsystem_plant',
+        image: 'images/13.png',
+      ),
     ];
     return Scaffold(
         appBar: AppBar(title: Text(widget.title)),
