@@ -19,7 +19,7 @@ dev_dependencies:
     sdk: flutter
 
 screenshots:
-  - description: 'This screenshot shows how to use flutter_turtle to draw a graphic in your app.'
+  - description: "This screenshot shows how to use flutter_turtle to draw a graphic in your app."
     path: screenshot.png
 
 flutter:
