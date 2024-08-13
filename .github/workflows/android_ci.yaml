@@ -3,6 +3,10 @@ on: [push]
 
 jobs:
   build:
+    strategy:
+      matrix:
+        version: ["3.20.x", "3.22.x", "3.24.x"]
+      fail-fast: false
     name: Build APK
     runs-on: ubuntu-latest
     steps:
@@ -12,7 +16,7 @@ jobs:
           java-version: "12.x"
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: "3.19.x"
+          flutter-version: ${{ matrix.version }}
           channel: "stable"
       - run: flutter pub get
         working-directory: ./example
