@@ -1,3 +1,7 @@
+## 0.6.0
+
+- Upgrade to SDK 3.32.0
+
 ## 0.5.0
 
 - Upgrade to SDK 3.3.0
