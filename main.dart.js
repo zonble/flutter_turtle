@@ -61079,10 +61079,12 @@ q.aB(n,B.i)
 l.restore()},
 $icA:1}
 A.v0.prototype={
-rh(a){a.b.r=this.a.gu()},
+rh(a){var s=this.a
+a.b.r=s.gu()
+return s},
 $icA:1}
 A.v2.prototype={
-rh(a){a.b.c=this.a},
+rh(a){return a.b.c=this.a},
 $icA:1}
 A.dy.prototype={
 cd(a,b){var s=t.z,r=A.da(b,s,s)
