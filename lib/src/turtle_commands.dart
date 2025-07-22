@@ -3,13 +3,13 @@ import 'painter.dart';
 import 'turtle_state.dart';
 
 /// An abstract interface for all commands.
-abstract class TurtleCommand {
+abstract interface class TurtleCommand {
   /// Creates instructions.
   List<Instruction> createInstruction(TurtleState turtle, Map argv);
 }
 
 /// An abstract interface for all commands.
-abstract class Instruction<T> {
+abstract interface class Instruction<T> {
   /// Runs the instruction.
   T exec(PaintContext context);
 }
@@ -18,8 +18,8 @@ abstract class Instruction<T> {
 class TurtleCompiler {
   /// Compiles commands to instructions.
   static List<Instruction> compile(List<TurtleCommand> commands) {
-    var turtle = TurtleState();
-    var argv = {};
+    final turtle = TurtleState();
+    final argv = {};
     var instructions = <Instruction>[];
     try {
       for (var command in commands) {
