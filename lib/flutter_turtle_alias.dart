@@ -1,4 +1,4 @@
-library flutter_turtle_alias;
+library;
 
 import 'flutter_turtle.dart';
 

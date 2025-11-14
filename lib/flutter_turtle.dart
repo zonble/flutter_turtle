@@ -37,7 +37,7 @@
 /// - RunMacro
 ///
 
-library flutter_turtle;
+library;
 
 export 'src/animated_turtle_view.dart';
 export 'src/commands/commands.dart';

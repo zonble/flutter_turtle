@@ -7,7 +7,7 @@ import '../turtle_commands.dart';
 import '../turtle_state.dart';
 import '_instructions.dart';
 
-_angleToRadians(double angle) => angle / 180 * math.pi;
+double _angleToRadians(double angle) => angle / 180 * math.pi;
 
 /// Asks the turtle to move forward.
 ///
