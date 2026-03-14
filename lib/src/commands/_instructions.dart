@@ -101,7 +101,9 @@ class DrawTextInstruction implements Instruction {
     context.canvas.rotate(math.pi * degrees / 180.0);
 
     final span = TextSpan(
-        style: TextStyle(color: color, fontSize: labelHeight), text: text);
+      style: TextStyle(color: color, fontSize: labelHeight),
+      text: text,
+    );
     final tp = TextPainter(text: span, textDirection: TextDirection.ltr);
     tp.layout();
     tp.paint(context.canvas, const Offset(0.0, 0.0));
