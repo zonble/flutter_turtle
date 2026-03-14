@@ -5,7 +5,7 @@ jobs:
   build:
     strategy:
       matrix:
-        version: ["3.24.x", "3.27.x", "3.29.x", "3.32.x", "3.35.x", "3.38.x", "3.41.x", "3.44.x"]
+        version: ["3.24.x", "3.27.x", "3.29.x", "3.32.x", "3.35.x", "3.38.x", "3.41.x"]
       fail-fast: false
     name: Build APK
     runs-on: ubuntu-latest
