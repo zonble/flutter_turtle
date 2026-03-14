@@ -4,13 +4,37 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
 
 permissions:
   contents: write
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ["3.24.x", "3.27.x", "3.29.x", "3.32.x", "3.35.x", "3.38.x"]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v5
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ matrix.version }}
+          channel: "stable"
+      - name: Install Dependencies
+        run: flutter packages get
+      - name: Analyze
+        run: flutter analyze
+      - name: Test
+        run: flutter test
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
 
     steps:
       - uses: actions/checkout@v5
