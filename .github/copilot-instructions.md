@@ -181,6 +181,28 @@ The `repcount` key (string constant defined in `repeat.dart`) is injected into t
 - Internal helpers (instructions, exceptions) use a leading underscore in the filename (e.g. `_instructions.dart`, `_exceptions.dart`) to indicate they are not part of the public API.
 - Public API classes have doc comments. Internal/private classes use doc comments where helpful.
 
+## Bootstrap and Build
+
+### Package setup
+
+```bash
+# In the package root
+flutter pub get
+
+# In the example app
+cd example && flutter pub get
+```
+
+### Build the example app
+
+```bash
+# Debug APK (Android) — matches the android_ci.yaml workflow
+cd example && flutter build apk --debug
+
+# Web with WASM (requires Flutter 3.38.x or later and web support enabled)
+cd example && flutter config --enable-web && flutter build web --wasm
+```
+
 ## Testing
 
 - Tests are located in `test/flutter_turtle_test.dart`.
